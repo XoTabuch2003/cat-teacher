@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школа Англійської мови Cat teacher</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Montserrat & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfd;
+            color: #111827;
+        }
+
+        .brand-font {
+            font-family: 'Comfortaa', cursive, sans-serif;
+        }
+
+        /* SVG Arc Text Styling */
+        .arc-text {
+            font-family: 'Comfortaa', cursive, sans-serif;
+            font-weight: 700;
+            fill: #111827;
+        }
+
+        /* Custom Hand-drawn / Modern Border Minimalist Design Token */
+        .card-sketch {
+            border: 2px solid #111827;
+            border-radius: 1.25rem;
+            box-shadow: 4px 4px 0px #111827;
+            background: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .card-sketch:hover {
+            box-shadow: 6px 6px 0px #111827;
+        }
+
+        .pill-sketch {
+            border: 2px solid #111827;
+            border-radius: 9999px;
+            box-shadow: 2px 2px 0px #111827;
+            background: #ffffff;
+        }
+
+        .btn-sketch {
+            border: 2px solid #111827;
+            border-radius: 0.75rem;
+            box-shadow: 3px 3px 0px #111827;
+            font-weight: 600;
+            transition: all 0.15s ease;
+            background-color: #ffffff;
+        }
+
+        .btn-sketch:hover {
+            transform: translateY(-1px);
+            box-shadow: 4px 4px 0px #111827;
+        }
+
+        .btn-sketch:active {
+            transform: translateY(2px);
+            box-shadow: 1px 1px 0px #111827;
+        }
+
+        /* Bongo Cat Animation */
+        @keyframes bongoPawLeft {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-10deg); }
+        }
+        @keyframes bongoPawRight {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(10deg); }
+        }
+
+        .paw-left {
+            animation: bongoPawLeft 0.5s infinite ease-in-out;
+            transform-origin: bottom right;
+        }
+
+        .paw-right {
+            animation: bongoPawRight 0.5s infinite ease-in-out 0.25s;
+            transform-origin: bottom left;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            background-color: rgba(17, 24, 39, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center p-4 transition-opacity duration-500">
+        <div class="relative flex flex-col items-center max-w-md w-full">
+            <!-- Arched Text Above Cat -->
+            <svg viewBox="0 0 500 150" class="w-full h-36">
+                <path id="curve" fill="transparent" d="M 50,130 A 200,100 0 0,1 450,130" />
+                <text font-size="22" class="arc-text" text-anchor="middle">
+                    <textPath href="#curve" startOffset="50%">
+                        Школа Англійської мови Cat teacher
+                    </textPath>
+                </text>
+            </svg>
+
+            <!-- Bongo Cat SVG Animation -->
+            <div class="w-48 h-36 relative -mt-6">
+                <svg viewBox="0 0 200 140" class="w-full h-full">
+                    <!-- Cat Body -->
+                    <path d="M 30,120 C 30,60 60,40 100,40 C 140,40 170,60 170,120 Z" fill="#ffffff" stroke="#111827" stroke-width="4" />
+                    <!-- Ears -->
+                    <polygon points="50,55 35,25 70,45" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round"/>
+                    <polygon points="150,55 165,25 130,45" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round"/>
+                    <polygon points="52,50 42,32 65,45" fill="#f472b6" />
+                    <polygon points="148,50 158,32 135,45" fill="#f472b6" />
+                    <!-- Eyes -->
+                    <circle cx="75" cy="70" r="5" fill="#111827" />
+                    <circle cx="125" cy="70" r="5" fill="#111827" />
+                    <!-- Mouth -->
+                    <path d="M 90,80 Q 95,87 100,80 Q 105,87 110,80" fill="transparent" stroke="#111827" stroke-width="3" stroke-linecap="round" />
+                    <!-- Paws -->
+                    <ellipse class="paw-left" cx="55" cy="105" rx="14" ry="10" fill="#ffffff" stroke="#111827" stroke-width="3" />
+                    <ellipse class="paw-right" cx="145" cy="105" rx="14" ry="10" fill="#ffffff" stroke="#111827" stroke-width="3" />
+                    <!-- Surface Table Line -->
+                    <line x1="10" y1="120" x2="190" y2="120" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+                </svg>
+            </div>
+
+            <button onclick="hideSplash()" class="mt-8 btn-sketch px-8 py-3 text-lg bg-yellow-300 hover:bg-yellow-400">
+                Зайти в школу <i class="fa-solid fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-white border-b-2 border-gray-900 sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo & Brand Arc Text Pill -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('dashboard')">
+                <div class="w-12 h-10 relative">
+                    <svg viewBox="0 0 200 140" class="w-full h-full">
+                        <path d="M 30,120 C 30,60 60,40 100,40 C 140,40 170,60 170,120 Z" fill="#ffffff" stroke="#111827" stroke-width="6" />
+                        <polygon points="50,55 35,25 70,45" fill="#ffffff" stroke="#111827" stroke-width="6" />
+                        <polygon points="150,55 165,25 130,45" fill="#ffffff" stroke="#111827" stroke-width="6" />
+                        <circle cx="75" cy="70" r="7" fill="#111827" />
+                        <circle cx="125" cy="70" r="7" fill="#111827" />
+                        <path d="M 90,82 Q 100,92 110,82" fill="transparent" stroke="#111827" stroke-width="5" />
+                    </svg>
+                </div>
+                <div class="pill-sketch px-4 py-1.5 hidden sm:block">
+                    <span class="brand-font font-bold text-sm sm:text-base">Школа Англійської мови Cat teacher</span>
+                </div>
+            </div>
+
+            <!-- Header Right: User Info & Controls -->
+            <div id="header-user-section" class="flex items-center space-x-3">
+                <!-- Dynamic Content injected via JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- LOGIN VIEW -->
+        <div id="view-login" class="max-w-md mx-auto my-12 card-sketch p-8">
+            <h2 class="text-2xl font-bold brand-font text-center mb-6">Вхід до системи</h2>
+            
+            <!-- Quick Role Selector Demo -->
+            <div class="mb-6 p-3 bg-yellow-50 rounded-xl border border-yellow-300 text-xs text-yellow-800">
+                <p class="font-bold mb-1"><i class="fa-solid fa-lightbulb mr-1"></i> Демо аккаунти (натисніть):</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <button onclick="quickLogin('student')" class="px-2 py-1 bg-white border border-yellow-400 rounded text-xs hover:bg-yellow-100">Учень (Данилко)</button>
+                    <button onclick="quickLogin('teacher')" class="px-2 py-1 bg-white border border-yellow-400 rounded text-xs hover:bg-yellow-100">Вчитель (Марія)</button>
+                    <button onclick="quickLogin('admin')" class="px-2 py-1 bg-white border border-yellow-400 rounded text-xs hover:bg-yellow-100">Вчитель-Куратор</button>
+                </div>
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold mb-1">Логін / Email</label>
+                    <input type="text" id="login-input" required placeholder="Введіть ваш логін" class="w-full px-4 py-2 border-2 border-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-1">Пароль</label>
+                    <input type="password" id="password-input" required placeholder="••••••••" class="w-full px-4 py-2 border-2 border-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                </div>
+                <button type="submit" class="w-full py-3 btn-sketch bg-yellow-300 hover:bg-yellow-400 text-gray-900">
+                    Увійти
+                </button>
+            </form>
+        </div>
+
+        <!-- STUDENT DASHBOARD VIEW -->
+        <div id="view-student-dashboard" class="hidden space-y-8">
+            <!-- Student Banner Row (Matching Image Mockup 1 & 4) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                <!-- Group Badge Header -->
+                <div class="md:col-span-8 flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <div class="pill-sketch px-8 py-3 text-center w-full sm:w-auto">
+                        <span class="text-2xl font-bold brand-font" id="student-group-title">Група 1.6</span>
+                    </div>
+                    <div class="pill-sketch px-6 py-2.5 text-center bg-gray-50 w-full sm:w-auto">
+                        <span class="text-lg font-semibold" id="student-name-title">Чаленко Данилко</span>
+                    </div>
+                </div>
+
+                <!-- Right Side Widget: Average Grade & Calendar Button -->
+                <div class="md:col-span-4 flex items-center justify-end space-x-3">
+                    <div class="pill-sketch px-4 py-2 flex items-center space-x-2 bg-green-50 border-green-800">
+                        <span class="text-2xl font-bold text-green-700" id="student-avg-grade">87 %</span>
+                        <span class="text-xs text-gray-600 font-medium leading-tight">середня<br>оцінка</span>
+                    </div>
+
+                    <button onclick="openCalendarModal()" class="btn-sketch px-4 py-2.5 flex items-center space-x-2 bg-blue-50 hover:bg-blue-100">
+                        <span class="text-sm font-bold">календар занять</span>
+                        <i class="fa-regular fa-calendar-days text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3 Main Mockup Columns -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Column 1: Пройдений матеріал -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-gray-50">
+                        Пройдений матеріал
+                    </div>
+                    <div id="student-past-lessons" class="space-y-3 overflow-y-auto max-h-96 pr-1 flex-1">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Column 2: завдане д\з -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-yellow-50">
+                        завдане д\з
+                    </div>
+                    <div id="student-current-hw" class="space-y-3 overflow-y-auto max-h-96 pr-1 flex-1">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Column 3: наступні уроки -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-blue-50">
+                        наступні уроки
+                    </div>
+                    <div id="student-upcoming-lessons" class="space-y-3 overflow-y-auto max-h-96 pr-1 flex-1">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teacher Profile Card under Dashboard -->
+            <div class="card-sketch p-5 flex flex-col sm:flex-row items-center justify-between bg-gradient-to-r from-yellow-50 to-orange-50">
+                <div class="flex items-center space-x-4 mb-3 sm:mb-0">
+                    <img id="student-teacher-avatar" src="https://placehold.co/100x100/111827/ffffff?text=Teacher" class="w-16 h-16 rounded-full border-2 border-gray-900 object-cover">
+                    <div>
+                        <div class="text-xs uppercase font-bold text-gray-500">Ваш Вчитель</div>
+                        <h4 class="text-lg font-bold" id="student-teacher-name">Марія Олександрівна</h4>
+                        <p class="text-xs text-gray-600">Школа Англійської мови Cat teacher</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="showToast('Чат з вчителем буде доступний незабаром')" class="btn-sketch px-4 py-2 text-sm bg-white">
+                        <i class="fa-regular fa-comment mr-1"></i> Написати вчителю
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEACHER DASHBOARD VIEW (Matching Mockup Image 2) -->
+        <div id="view-teacher-dashboard" class="hidden space-y-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="pill-sketch px-6 py-2 bg-yellow-100">
+                    <h2 class="text-xl font-bold brand-font" id="teacher-dashboard-welcome">Кабінет Вчителя</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="openCalendarModal()" class="btn-sketch px-4 py-2 bg-blue-50 text-sm">
+                        <i class="fa-regular fa-calendar-plus mr-1"></i> Додати урок / тему
+                    </button>
+                    <button id="btn-admin-manage" onclick="openAdminModal()" class="btn-sketch px-4 py-2 bg-purple-100 text-sm hidden">
+                        <i class="fa-solid fa-user-gear mr-1"></i> Керування учнями / вчителями
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3 Main Teacher Columns: Групи | Індивідуальні | Корисні посилання -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Panel 1: Групи -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-gray-50">
+                        групи
+                    </div>
+                    <div id="teacher-groups-list" class="space-y-3">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Panel 2: Індивідуальні -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-gray-50">
+                        індивідуальні
+                    </div>
+                    <div id="teacher-indiv-list" class="space-y-3">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Panel 3: Корисні посилання (Grid Icons matching Mockup 2) -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-gray-50">
+                        корисні посилання
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 flex-1">
+                        <a href="https://zoom.us" target="_blank" class="card-sketch p-4 flex flex-col items-center justify-center hover:bg-blue-50 transition cursor-pointer">
+                            <i class="fa-solid fa-video text-3xl text-blue-500 mb-2"></i>
+                            <span class="font-bold text-sm">zoom</span>
+                        </a>
+                        <a href="#" onclick="showToast('Відкрито навчальний PDF каталог'); return false;" class="card-sketch p-4 flex flex-col items-center justify-center hover:bg-red-50 transition cursor-pointer">
+                            <i class="fa-solid fa-file-pdf text-3xl text-red-500 mb-2"></i>
+                            <span class="font-bold text-sm">pdf</span>
+                        </a>
+                        <a href="#" onclick="showToast('Відкрито бібліотеку книжок'); return false;" class="card-sketch p-4 flex flex-col items-center justify-center hover:bg-green-50 transition cursor-pointer">
+                            <i class="fa-solid fa-book-open text-3xl text-green-600 mb-2"></i>
+                            <span class="font-bold text-sm">Books</span>
+                        </a>
+                        <a href="#" onclick="showToast('Запущено інтерактивну гру'); return false;" class="card-sketch p-4 flex flex-col items-center justify-center hover:bg-purple-50 transition cursor-pointer">
+                            <i class="fa-solid fa-gamepad text-3xl text-purple-600 mb-2"></i>
+                            <span class="font-bold text-sm">game</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Assignments to Grade -->
+            <div class="card-sketch p-6">
+                <h3 class="text-xl font-bold brand-font mb-4 flex items-center">
+                    <i class="fa-solid fa-clipboard-check text-yellow-500 mr-2"></i> 
+                    Домашні завдання на перевірку
+                </h3>
+                <div id="teacher-submissions-list" class="space-y-4">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- HOMEWORK DETAIL & SUBMISSION VIEW (Matching Mockup Image 3) -->
+        <div id="view-hw-detail" class="hidden space-y-6">
+            <button onclick="switchView('dashboard')" class="btn-sketch px-4 py-2 text-sm bg-gray-100">
+                <i class="fa-solid fa-arrow-left mr-1"></i> Назад до кабінету
+            </button>
+
+            <div class="pill-sketch px-6 py-3 inline-block bg-yellow-100">
+                <h2 class="text-xl sm:text-2xl font-bold brand-font" id="hw-detail-title">
+                    Д\з Hobbies, Creativity & Entertainment
+                </h2>
+            </div>
+
+            <!-- 3 Section Mockup Layout for HW -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Box 1: завдане д\з description -->
+                <div class="card-sketch p-5 flex flex-col">
+                    <div class="border-b-2 border-gray-900 pb-2 mb-4 font-bold text-lg">
+                        завдане д\з
+                    </div>
+                    <div id="hw-description-content" class="space-y-4 text-sm leading-relaxed flex-1">
+                        <!-- Description injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Box 2: написати завдання текстом & Вокабуляр / Voice -->
+                <div class="card-sketch p-5 flex flex-col">
+                    <div class="border-b-2 border-gray-900 pb-2 mb-4 font-bold text-lg">
+                        виконання завдання
+                    </div>
+                    <div class="space-y-4 flex-1">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Текстова відповідь:</label>
+                            <textarea id="hw-text-response" rows="4" placeholder="Введіть ваш текст або відповідь тут..." class="w-full p-3 border-2 border-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"></textarea>
+                        </div>
+
+                        <!-- Audio Vocabulary Recorder Box -->
+                        <div class="p-4 bg-yellow-50 rounded-xl border-2 border-gray-900">
+                            <label class="block text-xs font-bold text-gray-800 uppercase mb-2">
+                                <i class="fa-solid fa-microphone mr-1 text-red-500"></i> Голосове Д/З (Вокабуляр)
+                            </label>
+                            <p class="text-xs text-gray-600 mb-3">Вимовте надані слова англійською мовою:</p>
+                            
+                            <div class="flex items-center space-x-3">
+                                <button id="btn-record-audio" onclick="toggleAudioRecording()" class="btn-sketch px-4 py-2 text-xs bg-red-100 text-red-700 flex items-center space-x-2">
+                                    <span id="record-icon" class="w-3 h-3 rounded-full bg-red-600"></span>
+                                    <span id="record-text">Записати голос</span>
+                                </button>
+                                <span id="record-timer" class="text-xs font-mono font-bold hidden">00:00</span>
+                            </div>
+
+                            <!-- Audio Player preview -->
+                            <div id="audio-preview-container" class="mt-3 hidden">
+                                <audio id="audio-player" controls class="w-full h-8"></audio>
+                            </div>
+                        </div>
+
+                        <!-- Quiz / Test Link if assigned -->
+                        <div id="hw-quiz-box" class="hidden p-3 bg-blue-50 border-2 border-gray-900 rounded-xl">
+                            <span class="text-xs font-bold text-blue-800 block mb-1">Інтерактивний Тест</span>
+                            <button onclick="startLessonQuiz()" class="btn-sketch px-3 py-1.5 text-xs bg-blue-400 text-white w-full">
+                                Пройти тест по темі <i class="fa-solid fa-pen-to-square ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box 3: завантажити завдання (Files / Upload) -->
+                <div class="card-sketch p-5 flex flex-col items-center justify-center text-center">
+                    <div class="w-full border-b-2 border-gray-900 pb-2 mb-4 font-bold text-lg text-left">
+                        завантажити завдання
+                    </div>
+
+                    <div id="file-drop-area" onclick="triggerFileInput()" class="w-full flex-1 border-2 border-dashed border-gray-900 rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 transition">
+                        <!-- Upload Cloud Icon matching Mockup Image 3 -->
+                        <svg class="w-20 h-20 text-gray-800 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        <p class="text-sm font-semibold">Натисніть або перетягніть файл</p>
+                        <p class="text-xs text-gray-500 mt-1">PDF, Word, Google Doc або зображення</p>
+                        <input type="file" id="hw-file-input" class="hidden" onchange="handleFileSelect(event)">
+                    </div>
+
+                    <div id="selected-file-info" class="w-full mt-3 hidden p-2 bg-gray-100 rounded-lg border border-gray-300 text-xs text-left">
+                        <span class="font-bold block truncate" id="selected-file-name">file.pdf</span>
+                    </div>
+
+                    <button onclick="submitHomework()" class="w-full mt-4 btn-sketch py-3 bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-bold">
+                        Надіслати завдання <i class="fa-solid fa-paper-plane ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL: CALENDAR (Notion-Style Date Picker & Lesson Creation) -->
+    <div id="modal-calendar" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-4xl bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-3">
+                <h3 class="text-xl font-bold brand-font flex items-center">
+                    <i class="fa-regular fa-calendar-days text-yellow-500 mr-2"></i> Календар Занять
+                </h3>
+                <button onclick="closeModal('modal-calendar')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
+
+            <!-- Month Navigator -->
+            <div class="flex justify-between items-center mb-4">
+                <button onclick="changeMonth(-1)" class="btn-sketch px-3 py-1 text-sm">&lt; Попередній</button>
+                <span id="calendar-month-year" class="font-bold text-lg">Листопад 2026</span>
+                <button onclick="changeMonth(1)" class="btn-sketch px-3 py-1 text-sm">Наступний &gt;</button>
+            </div>
+
+            <!-- Calendar Grid -->
+            <div class="grid grid-cols-7 gap-1 text-center font-bold text-xs mb-2">
+                <div class="py-1 text-gray-500">Пн</div>
+                <div class="py-1 text-gray-500">Вт</div>
+                <div class="py-1 text-gray-500">Ср</div>
+                <div class="py-1 text-gray-500">Чт</div>
+                <div class="py-1 text-gray-500">Пт</div>
+                <div class="py-1 text-gray-500 text-red-500">Сб</div>
+                <div class="py-1 text-gray-500 text-red-500">Нд</div>
+            </div>
+            <div id="calendar-days-grid" class="grid grid-cols-7 gap-2 min-h-[300px]">
+                <!-- Grid Days Injected via JS -->
+            </div>
+            
+            <p class="text-xs text-gray-500 mt-4 text-center">* Натисніть на дату, щоб переглянути або створити урок</p>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD / EDIT LESSON (Teacher Only) -->
+    <div id="modal-lesson-form" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-lg bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <h3 class="text-lg font-bold brand-font" id="lesson-modal-title">Створити Урок</h3>
+                <button onclick="closeModal('modal-lesson-form')" class="text-gray-500 hover:text-black text-2xl">&times;</button>
+            </div>
+
+            <form onsubmit="saveLesson(event)" class="space-y-4">
+                <input type="hidden" id="form-lesson-id">
+                <input type="hidden" id="form-lesson-date">
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">Група або Учень</label>
+                    <select id="form-lesson-target" class="w-full p-2 border-2 border-gray-900 rounded-xl text-sm">
+                        <option value="Група 1.6">Група 1.6</option>
+                        <option value="Група 1.5">Група 1.5</option>
+                        <option value="Група 1.4">Група 1.4</option>
+                        <option value="Чаленко Філіція">Чаленко Філіція (Індивідуально)</option>
+                        <option value="Чаленко Остап">Чаленко Остап (Індивідуально)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">Назва теми / уроку</label>
+                    <input type="text" id="form-lesson-title" required placeholder="напр. Everyday Life & Routines" class="w-full p-2 border-2 border-gray-900 rounded-xl text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">Конспект та матеріали (посилання, відео, текст)</label>
+                    <textarea id="form-lesson-notes" rows="3" placeholder="Додайте конспект уроку чи корисні посилання..." class="w-full p-2 border-2 border-gray-900 rounded-xl text-sm"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">Завдання Д/З</label>
+                    <textarea id="form-lesson-hw" rows="2" placeholder="Опис домашнього завдання..." class="w-full p-2 border-2 border-gray-900 rounded-xl text-sm"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">Термін виконання (Deadline)</label>
+                    <input type="date" id="form-lesson-deadline" class="w-full p-2 border-2 border-gray-900 rounded-xl text-sm">
+                </div>
+
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeModal('modal-lesson-form')" class="btn-sketch px-4 py-2 text-sm bg-gray-100">Скасувати</button>
+                    <button type="submit" class="btn-sketch px-4 py-2 text-sm bg-yellow-300 hover:bg-yellow-400">Зберегти урок</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADMIN / CURATOR (Manage Teachers & Students) -->
+    <div id="modal-admin" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-2xl bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <h3 class="text-lg font-bold brand-font">Панель Куратора: Учні та Вчителі</h3>
+                <button onclick="closeModal('modal-admin')" class="text-gray-500 hover:text-black text-2xl">&times;</button>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="flex border-b-2 border-gray-900 mb-4">
+                <button onclick="switchAdminTab('students')" id="tab-btn-students" class="px-4 py-2 font-bold border-b-4 border-yellow-400">Реєстрація Учнів</button>
+                <button onclick="switchAdminTab('teachers')" id="tab-btn-teachers" class="px-4 py-2 font-bold text-gray-500">Додати Вчителя</button>
+            </div>
+
+            <!-- TAB 1: Register Student -->
+            <div id="admin-tab-students" class="space-y-4">
+                <form onsubmit="registerStudent(event)" class="space-y-3 bg-yellow-50 p-4 rounded-xl border-2 border-gray-900">
+                    <h4 class="font-bold text-sm">Зареєструвати нового учня:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="reg-student-name" required placeholder="ПІБ учня" class="p-2 border-2 border-gray-900 rounded-lg text-sm">
+                        <input type="text" id="reg-student-login" required placeholder="Логін учня" class="p-2 border-2 border-gray-900 rounded-lg text-sm">
+                        <input type="password" id="reg-student-pass" required placeholder="Пароль" class="p-2 border-2 border-gray-900 rounded-lg text-sm">
+                        <select id="reg-student-type" onchange="toggleGroupSelect()" class="p-2 border-2 border-gray-900 rounded-lg text-sm">
+                            <option value="group">Групове навчання</option>
+                            <option value="individual">Індивідуальне</option>
+                        </select>
+                    </div>
+                    <div id="group-select-container">
+                        <input type="text" id="reg-student-group" placeholder="Назва групи (напр. Група 1.6)" class="w-full p-2 border-2 border-gray-900 rounded-lg text-sm">
+                    </div>
+                    <button type="submit" class="btn-sketch px-4 py-2 bg-yellow-300 text-sm font-bold w-full">Створити акаунт учня</button>
+                </form>
+
+                <h4 class="font-bold text-sm mt-4">Зареєстровані Учні:</h4>
+                <div id="admin-students-list" class="space-y-2 max-h-48 overflow-y-auto">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+
+            <!-- TAB 2: Add Teacher -->
+            <div id="admin-tab-teachers" class="hidden space-y-4">
+                <form onsubmit="registerTeacher(event)" class="space-y-3 bg-purple-50 p-4 rounded-xl border-2 border-gray-900">
+                    <h4 class="font-bold text-sm">Додати нового вчителя:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" id="reg-teacher-name" required placeholder="ПІБ вчителя" class="p-2 border-2 border-gray-900 rounded-lg text-sm">
+                        <input type="text" id="reg-teacher-login" required placeholder="Логін" class="p-2 border-2 border-gray-900 rounded-lg text-sm">
+                        <input type="password" id="reg-teacher-pass" required placeholder="Пароль" class="p-2 border-2 border-gray-900 rounded-lg text-sm">
+                        <input type="text" id="reg-teacher-groups" placeholder="Призначені групи (через кому)" class="p-2 border-2 border-gray-900 rounded-lg text-sm">
+                    </div>
+                    <button type="submit" class="btn-sketch px-4 py-2 bg-purple-300 text-sm font-bold w-full">Зареєструвати вчителя</button>
+                </form>
+
+                <h4 class="font-bold text-sm mt-4">Список вчителів школи:</h4>
+                <div id="admin-teachers-list" class="space-y-2 max-h-48 overflow-y-auto">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: QUIZ / TEST INTERFACE -->
+    <div id="modal-quiz" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-lg bg-white p-6">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <h3 class="text-lg font-bold brand-font">Тест: Hobbies & Entertainment</h3>
+                <button onclick="closeModal('modal-quiz')" class="text-gray-500 hover:text-black text-2xl">&times;</button>
+            </div>
+
+            <div id="quiz-questions-container" class="space-y-4">
+                <div>
+                    <p class="font-bold text-sm mb-2">1. Choose the correct synonym for "Plot line":</p>
+                    <div class="space-y-1 text-sm">
+                        <label class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <input type="radio" name="q1" value="a"> <span>Character arc</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <input type="radio" name="q1" value="b"> <span>Storyline / Subplot</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <input type="radio" name="q1" value="c"> <span>Cliffhanger</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-bold text-sm mb-2">2. What does "Binge-worthy" mean?</p>
+                    <div class="space-y-1 text-sm">
+                        <label class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <input type="radio" name="q2" value="a"> <span>Boring show</span>
+                        </label>
+                        <label class="flex items-center space-x-2 p-2 rounded hover:bg-gray-100 cursor-pointer">
+                            <input type="radio" name="q2" value="b"> <span>Worth watching many episodes in a row</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="submitQuiz()" class="w-full mt-6 btn-sketch py-2.5 bg-green-300 hover:bg-green-400 font-bold text-sm">
+                Завершити тест
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification Popup -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 card-sketch px-5 py-3 bg-gray-900 text-white font-semibold text-sm hidden transform transition-all duration-300">
+        <!-- Text injected via JS -->
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- INITIAL DATA STORE & LOCAL STORAGE MANAGEMENT ---
+        const DEFAULT_USERS = [
+            {
+                id: 'u1',
+                login: 'student',
+                pass: '123',
+                role: 'student',
+                name: 'Чаленко Данилко',
+                avatar: 'https://placehold.co/100x100/111827/ffffff?text=Учень',
+                type: 'group',
+                group: 'Група 1.6',
+                teacherId: 't1'
+            },
+            {
+                id: 'u2',
+                login: 'felicia',
+                pass: '123',
+                role: 'student',
+                name: 'Чаленко Філіція',
+                avatar: 'https://placehold.co/100x100/111827/ffffff?text=Філіція',
+                type: 'individual',
+                teacherId: 't1'
+            },
+            {
+                id: 'u3',
+                login: 'ostap',
+                pass: '123',
+                role: 'student',
+                name: 'Чаленко Остап',
+                avatar: 'https://placehold.co/100x100/111827/ffffff?text=Остап',
+                type: 'individual',
+                teacherId: 't1'
+            },
+            {
+                id: 't1',
+                login: 'teacher',
+                pass: '123',
+                role: 'teacher',
+                name: 'Марія Олександрівна',
+                avatar: 'https://placehold.co/100x100/111827/ffffff?text=Вчитель',
+                groups: ['Група 1.6', 'Група 1.5', 'Група 1.4'],
+                isCurator: false
+            },
+            {
+                id: 't0',
+                login: 'admin',
+                pass: '123',
+                role: 'teacher',
+                name: 'Олена Вікторівна (Куратор)',
+                avatar: 'https://placehold.co/100x100/111827/ffffff?text=Head',
+                groups: ['Група 1.6', 'Група 1.5', 'Група 1.4'],
+                isCurator: true
+            }
+        ];
+
+        const DEFAULT_LESSONS = [
+            {
+                id: 'l1',
+                target: 'Група 1.6',
+                title: 'Everyday Life & Routines (Beginner – Elementary)',
+                status: 'past',
+                date: '2026-11-01',
+                notes: 'Пройшли базову лексику щоденних справ, теперішній простий час Present Simple.',
+                hw: 'Написати 5 речень про свій звичайний день.'
+            },
+            {
+                id: 'l2',
+                target: 'Група 1.6',
+                title: 'Travel & Exploring (Pre-Intermediate)',
+                status: 'past',
+                date: '2026-11-04',
+                notes: 'Аеропорт, готелі та бронювання квитків.',
+                hw: 'Перекласти діалог на сторінці 42.'
+            },
+            {
+                id: 'l3',
+                target: 'Група 1.6',
+                title: 'Work, Career & Projects (Intermediate)',
+                status: 'past',
+                date: '2026-11-06',
+                notes: 'Співбесіди та ділова переписка.',
+                hw: 'Скласти коротке резюме англійською.'
+            },
+            {
+                id: 'l4',
+                target: 'Група 1.6',
+                title: 'Hobbies, Creativity & Entertainment',
+                status: 'current',
+                date: '2026-11-08',
+                notes: 'Discussing plot lines, character arcs, favorite genres, and writing reviews.\nPlot line / Subplot — сюжетна лінія / побічна лінія.\nCharacter arc / Character development — розвиток / арка персонажа.\nBinge-worthy / Cliffhanger — те, що варто дивитися підряд / гострий момент.',
+                hw: 'Підготувати вокабуляр голосовим повідомленням та прикріпити письмову рецензію на фільм.',
+                deadline: '2026-11-12'
+            },
+            {
+                id: 'l5',
+                target: 'Група 1.6',
+                title: 'Society, Tech & Big Ideas',
+                status: 'upcoming',
+                date: '2026-11-15',
+                notes: 'Обговорення штучного інтелекту та сучасних технологій.',
+                hw: 'Підготувати презентацію.'
+            }
+        ];
+
+        const DEFAULT_GRADES = [
+            { studentId: 'u1', lessonId: 'l1', score: 90 },
+            { studentId: 'u1', lessonId: 'l2', score: 85 },
+            { studentId: 'u1', lessonId: 'l3', score: 86 }
+        ];
+
+        // State variables
+        let users = JSON.parse(localStorage.getItem('cat_users')) || DEFAULT_USERS;
+        let lessons = JSON.parse(localStorage.getItem('cat_lessons')) || DEFAULT_LESSONS;
+        let grades = JSON.parse(localStorage.getItem('cat_grades')) || DEFAULT_GRADES;
+        let currentUser = null;
+        let activeHwLesson = null;
+        
+        // Calendar State
+        let calendarDate = new Date(2026, 10, 1); // Nov 2026
+
+        // Audio Recorder State
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let recordedAudioBlob = null;
+        let isRecording = false;
+        let timerInterval = null;
+        let secondsRecorded = 0;
+
+        // Init App
+        window.onload = function() {
+            renderHeader();
+            renderCalendarGrid();
+        };
+
+        function saveData() {
+            localStorage.setItem('cat_users', JSON.stringify(users));
+            localStorage.setItem('cat_lessons', JSON.stringify(lessons));
+            localStorage.setItem('cat_grades', JSON.stringify(grades));
+        }
+
+        // --- NAVIGATION & VIEWS ---
+        function hideSplash() {
+            const splash = document.getElementById('splash-screen');
+            splash.classList.add('opacity-0');
+            setTimeout(() => {
+                splash.classList.add('hidden');
+                if (!currentUser) {
+                    switchView('login');
+                }
+            }, 500);
+        }
+
+        function switchView(viewName) {
+            document.getElementById('view-login').classList.add('hidden');
+            document.getElementById('view-student-dashboard').classList.add('hidden');
+            document.getElementById('view-teacher-dashboard').classList.add('hidden');
+            document.getElementById('view-hw-detail').classList.add('hidden');
+
+            if (viewName === 'login') {
+                document.getElementById('view-login').classList.remove('hidden');
+            } else if (viewName === 'dashboard') {
+                if (!currentUser) {
+                    switchView('login');
+                    return;
+                }
+                if (currentUser.role === 'student') {
+                    renderStudentDashboard();
+                    document.getElementById('view-student-dashboard').classList.remove('hidden');
+                } else {
+                    renderTeacherDashboard();
+                    document.getElementById('view-teacher-dashboard').classList.remove('hidden');
+                }
+            } else if (viewName === 'hw-detail') {
+                document.getElementById('view-hw-detail').classList.remove('hidden');
+            }
+        }
+
+        function renderHeader() {
+            const container = document.getElementById('header-user-section');
+            if (!currentUser) {
+                container.innerHTML = `
+                    <button onclick="switchView('login')" class="btn-sketch px-4 py-2 text-sm bg-yellow-300">
+                        Увійти
+                    </button>
+                `;
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <!-- User Avatar & Upload Input -->
+                    <div class="relative group cursor-pointer" title="Натисніть для зміни фото">
+                        <img src="${currentUser.avatar}" id="header-avatar-img" class="w-10 h-10 rounded-full border-2 border-gray-900 object-cover">
+                        <label class="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition cursor-pointer">
+                            <i class="fa-solid fa-camera text-white text-xs"></i>
+                            <input type="file" class="hidden" accept="image/*" onchange="uploadUserAvatar(event)">
+                        </label>
+                    </div>
+                    <div class="hidden sm:block text-left">
+                        <div class="text-sm font-bold leading-tight">${currentUser.name}</div>
+                        <div class="text-xs text-gray-500">${currentUser.role === 'student' ? (currentUser.group || 'Індивідуально') : 'Вчитель'}</div>
+                    </div>
+                    <button onclick="logout()" class="btn-sketch px-3 py-1.5 text-xs bg-gray-100 hover:bg-gray-200">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </div>
+            `;
+        }
+
+        // --- AUTHENTICATION ---
+        function quickLogin(type) {
+            if (type === 'student') {
+                document.getElementById('login-input').value = 'student';
+                document.getElementById('password-input').value = '123';
+            } else if (type === 'teacher') {
+                document.getElementById('login-input').value = 'teacher';
+                document.getElementById('password-input').value = '123';
+            } else if (type === 'admin') {
+                document.getElementById('login-input').value = 'admin';
+                document.getElementById('password-input').value = '123';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const log = document.getElementById('login-input').value.trim();
+            const pass = document.getElementById('password-input').value.trim();
+
+            const user = users.find(u => u.login.toLowerCase() === log.toLowerCase() && u.pass === pass);
+            if (user) {
+                currentUser = user;
+                renderHeader();
+                switchView('dashboard');
+                showToast(`Ласкаво просимо, ${user.name}!`);
+            } else {
+                showToast('Невірний логін або пароль!');
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            renderHeader();
+            switchView('login');
+            showToast('Ви вийшли з системи');
+        }
+
+        function uploadUserAvatar(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    currentUser.avatar = evt.target.result;
+                    saveData();
+                    renderHeader();
+                    if (currentUser.role === 'student') renderStudentDashboard();
+                    showToast('Фото профілю оновлено!');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // --- STUDENT DASHBOARD RENDER ---
+        function renderStudentDashboard() {
+            document.getElementById('student-group-title').innerText = currentUser.group || 'Індивідуально';
+            document.getElementById('student-name-title').innerText = currentUser.name;
+
+            // Calculate Average Grade
+            const myGrades = grades.filter(g => g.studentId === currentUser.id);
+            if (myGrades.length > 0) {
+                const avg = Math.round(myGrades.reduce((acc, c) => acc + c.score, 0) / myGrades.length);
+                document.getElementById('student-avg-grade').innerText = `${avg} %`;
+            } else {
+                document.getElementById('student-avg-grade').innerText = '87 %';
+            }
+
+            // Find Teacher Info
+            const teacher = users.find(u => u.id === currentUser.teacherId) || users.find(u => u.role === 'teacher');
+            if (teacher) {
+                document.getElementById('student-teacher-name').innerText = teacher.name;
+                document.getElementById('student-teacher-avatar').src = teacher.avatar;
+            }
+
+            // Filter Lessons for group/individual
+            const myTarget = currentUser.type === 'group' ? currentUser.group : currentUser.name;
+            const targetLessons = lessons.filter(l => l.target === myTarget || l.target === 'Група 1.6');
+
+            // Column 1: Past Lessons
+            const past = targetLessons.filter(l => l.status === 'past');
+            const pastContainer = document.getElementById('student-past-lessons');
+            pastContainer.innerHTML = past.map(l => `
+                <div class="p-3 bg-gray-50 border border-gray-300 rounded-xl hover:bg-gray-100 transition cursor-pointer" onclick="openHwDetail('${l.id}')">
+                    <h5 class="font-bold text-sm text-gray-900">${l.title}</h5>
+                    <span class="text-xs text-gray-500">${l.date}</span>
+                </div>
+            `).join('');
+
+            // Column 2: Current HW
+            const current = targetLessons.filter(l => l.status === 'current');
+            const currentContainer = document.getElementById('student-current-hw');
+            currentContainer.innerHTML = current.map(l => `
+                <div class="p-4 bg-yellow-50 border-2 border-gray-900 rounded-xl hover:bg-yellow-100 transition cursor-pointer shadow-sm" onclick="openHwDetail('${l.id}')">
+                    <span class="text-xs font-bold text-yellow-800 uppercase tracking-wide">Активне завдання</span>
+                    <h5 class="font-bold text-base text-gray-900 mt-1">${l.title}</h5>
+                    ${l.deadline ? `<div class="text-xs font-semibold text-red-600 mt-2"><i class="fa-regular fa-clock mr-1"></i>Термін: ${l.deadline}</div>` : ''}
+                    <button class="mt-3 btn-sketch px-3 py-1.5 text-xs bg-yellow-300 w-full">Виконати Д/З</button>
+                </div>
+            `).join('');
+
+            // Column 3: Upcoming Lessons
+            const upcoming = targetLessons.filter(l => l.status === 'upcoming');
+            const upcomingContainer = document.getElementById('student-upcoming-lessons');
+            upcomingContainer.innerHTML = upcoming.map(l => `
+                <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl">
+                    <h5 class="font-bold text-sm text-gray-900">${l.title}</h5>
+                    <span class="text-xs text-blue-700 font-semibold">Дата: ${l.date}</span>
+                </div>
+            `).join('');
+        }
+
+        // --- TEACHER DASHBOARD RENDER ---
+        function renderTeacherDashboard() {
+            document.getElementById('teacher-dashboard-welcome').innerText = `Вітаємо, ${currentUser.name}`;
+            
+            // Show Curator button if Admin/Curator
+            const adminBtn = document.getElementById('btn-admin-manage');
+            if (currentUser.isCurator) {
+                adminBtn.classList.remove('hidden');
+            } else {
+                adminBtn.classList.add('hidden');
+            }
+
+            // Render Groups
+            const groupsContainer = document.getElementById('teacher-groups-list');
+            const groups = currentUser.groups || ['Група 1.6', 'Група 1.5', 'Група 1.4'];
+            groupsContainer.innerHTML = groups.map(g => `
+                <div class="card-sketch p-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer" onclick="filterTeacherView('${g}')">
+                    <span class="font-bold text-base">${g}</span>
+                    <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                </div>
+            `).join('');
+
+            // Render Individual Students
+            const indivContainer = document.getElementById('teacher-indiv-list');
+            const indivs = users.filter(u => u.role === 'student' && u.type === 'individual');
+            indivContainer.innerHTML = indivs.map(s => `
+                <div class="card-sketch p-3 flex justify-between items-center hover:bg-gray-50 cursor-pointer" onclick="filterTeacherView('${s.name}')">
+                    <div class="flex items-center space-x-2">
+                        <img src="${s.avatar}" class="w-7 h-7 rounded-full border border-gray-900">
+                        <span class="font-bold text-sm">${s.name}</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-gray-400"></i>
+                </div>
+            `).join('');
+
+            // Render Pending Submissions
+            const subContainer = document.getElementById('teacher-submissions-list');
+            subContainer.innerHTML = `
+                <div class="p-4 bg-white border-2 border-gray-900 rounded-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-sm">Чаленко Данилко</span>
+                            <span class="text-xs bg-yellow-200 px-2 py-0.5 rounded-full border border-gray-900">Група 1.6</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">Урок: Hobbies, Creativity & Entertainment</p>
+                        <p class="text-xs font-semibold text-green-700 mt-1"><i class="fa-solid fa-microphone mr-1"></i> Додано голосове Д/З + PDF файл</p>
+                    </div>
+                    <div class="flex items-center space-x-2 w-full md:w-auto">
+                        <button onclick="playMockAudio()" class="btn-sketch px-3 py-1.5 text-xs bg-blue-100 text-blue-800">
+                            <i class="fa-solid fa-play mr-1"></i> Прослухати
+                        </button>
+                        <input type="number" id="grade-input-1" min="1" max="100" placeholder="Оцінка %" class="w-20 p-1.5 border-2 border-gray-900 rounded-lg text-xs text-center font-bold">
+                        <button onclick="saveGrade('u1', 'l4')" class="btn-sketch px-3 py-1.5 text-xs bg-green-300">
+                            Оцінити
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterTeacherView(target) {
+            showToast(`Фільтр матеріалів для: ${target}`);
+        }
+
+        function playMockAudio() {
+            showToast('Відтворення аудіовідповіді учня...');
+        }
+
+        function saveGrade(studentId, lessonId) {
+            const val = document.getElementById('grade-input-1').value;
+            if (!val) {
+                showToast('Введіть оцінку від 1 до 100!');
+                return;
+            }
+            grades.push({ studentId, lessonId, score: parseInt(val) });
+            saveData();
+            showToast(`Оцінку ${val}% виставлено та перераховано середній бал!`);
+        }
+
+        // --- HOMEWORK DETAIL VIEW & AUDIO RECORDER ---
+        function openHwDetail(lessonId) {
+            const lesson = lessons.find(l => l.id === lessonId) || lessons[3];
+            activeHwLesson = lesson;
+
+            document.getElementById('hw-detail-title').innerText = `Д\\з ${lesson.title}`;
+            document.getElementById('hw-description-content').innerHTML = `
+                <p><strong>Конспект уроку:</strong></p>
+                <p>${lesson.notes.replace(/\n/g, '<br>')}</p>
+                <div class="p-3 bg-yellow-50 rounded-xl border border-yellow-300 mt-3">
+                    <p class="font-bold text-xs uppercase text-yellow-800">Завдання вчителя:</p>
+                    <p class="text-sm mt-1">${lesson.hw}</p>
+                </div>
+            `;
+
+            document.getElementById('hw-quiz-box').classList.remove('hidden');
+            switchView('hw-detail');
+        }
+
+        // Audio Recorder Logic using MediaRecorder API
+        async function toggleAudioRecording() {
+            const btnText = document.getElementById('record-text');
+            const timerEl = document.getElementById('record-timer');
+
+            if (!isRecording) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
+
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        recordedAudioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
+                        const audioUrl = URL.createObjectURL(recordedAudioBlob);
+                        const player = document.getElementById('audio-player');
+                        player.src = audioUrl;
+                        document.getElementById('audio-preview-container').classList.remove('hidden');
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    btnText.innerText = 'Зупинити запис';
+                    timerEl.classList.remove('hidden');
+                    
+                    secondsRecorded = 0;
+                    timerInterval = setInterval(() => {
+                        secondsRecorded++;
+                        const mins = String(Math.floor(secondsRecorded / 60)).padStart(2, '0');
+                        const secs = String(secondsRecorded % 60).padStart(2, '0');
+                        timerEl.innerText = `${mins}:${secs}`;
+                    }, 1000);
+
+                    showToast('Мікрофон активовано. Говоріть...');
+                } catch (err) {
+                    showToast('Доступ до мікрофону відхилено або не підтримується браузером');
+                }
+            } else {
+                mediaRecorder.stop();
+                mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                isRecording = false;
+                clearInterval(timerInterval);
+                btnText.innerText = 'Перезаписати голос';
+                showToast('Запис завершено! Можна прослухати.');
+            }
+        }
+
+        function triggerFileInput() {
+            document.getElementById('hw-file-input').click();
+        }
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('selected-file-info').classList.remove('hidden');
+                document.getElementById('selected-file-name').innerText = `Файл: ${file.name} (${Math.round(file.size/1024)} KB)`;
+                showToast(`Прикріплено файл: ${file.name}`);
+            }
+        }
+
+        function submitHomework() {
+            showToast('Домашнє завдання успішно надіслано вчителю!');
+            setTimeout(() => {
+                switchView('dashboard');
+            }, 1200);
+        }
+
+        // --- NOTION-STYLE CALENDAR LOGIC ---
+        function openCalendarModal() {
+            document.getElementById('modal-calendar').classList.remove('hidden');
+            renderCalendarGrid();
+        }
+
+        function changeMonth(delta) {
+            calendarDate.setMonth(calendarDate.getMonth() + delta);
+            renderCalendarGrid();
+        }
+
+        function renderCalendarGrid() {
+            const year = calendarDate.getFullYear();
+            const month = calendarDate.getMonth();
+
+            const monthNames = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
+            document.getElementById('calendar-month-year').innerText = `${monthNames[month]} ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            // Adjust first day for Mon-Sun grid (0 = Sunday in JS)
+            let startingIndex = firstDay === 0 ? 6 : firstDay - 1;
+
+            const grid = document.getElementById('calendar-days-grid');
+            grid.innerHTML = '';
+
+            // Empty padding cells
+            for (let i = 0; i < startingIndex; i++) {
+                grid.innerHTML += `<div class="p-2 border border-gray-100 bg-gray-50 rounded-xl opacity-40"></div>`;
+            }
+
+            // Month Days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                
+                // Find lessons for this date
+                const dayLessons = lessons.filter(l => l.date === dateStr);
+
+                let badgeHtml = '';
+                if (dayLessons.length > 0) {
+                    badgeHtml = dayLessons.map(l => `
+                        <div class="mt-1 p-1 text-[10px] bg-yellow-200 border border-gray-900 rounded font-bold truncate">
+                            ${l.title}
+                        </div>
+                    `).join('');
+                }
+
+                grid.innerHTML += `
+                    <div onclick="handleCalendarDateClick('${dateStr}')" class="p-2 border-2 border-gray-900 rounded-xl bg-white hover:bg-yellow-50 transition cursor-pointer flex flex-col justify-between min-h-[70px]">
+                        <span class="font-bold text-sm text-left">${day}</span>
+                        <div>${badgeHtml}</div>
+                    </div>
+                `;
+            }
+        }
+
+        function handleCalendarDateClick(dateStr) {
+            closeModal('modal-calendar');
+            if (currentUser && currentUser.role === 'teacher') {
+                // Open creation form for teacher
+                document.getElementById('form-lesson-id').value = '';
+                document.getElementById('form-lesson-date').value = dateStr;
+                document.getElementById('form-lesson-title').value = '';
+                document.getElementById('form-lesson-notes').value = '';
+                document.getElementById('form-lesson-hw').value = '';
+                document.getElementById('lesson-modal-title').innerText = `Створити Урок на ${dateStr}`;
+                document.getElementById('modal-lesson-form').classList.remove('hidden');
+            } else {
+                // Student view lessons on this date
+                const dayLessons = lessons.filter(l => l.date === dateStr);
+                if (dayLessons.length > 0) {
+                    openHwDetail(dayLessons[0].id);
+                } else {
+                    showToast(`На ${dateStr} занять не заплановано`);
+                }
+            }
+        }
+
+        function saveLesson(e) {
+            e.preventDefault();
+            const newLesson = {
+                id: 'l_' + Date.now(),
+                target: document.getElementById('form-lesson-target').value,
+                title: document.getElementById('form-lesson-title').value,
+                notes: document.getElementById('form-lesson-notes').value,
+                hw: document.getElementById('form-lesson-hw').value,
+                deadline: document.getElementById('form-lesson-deadline').value,
+                date: document.getElementById('form-lesson-date').value || '2026-11-15',
+                status: 'upcoming'
+            };
+
+            lessons.push(newLesson);
+            saveData();
+            closeModal('modal-lesson-form');
+            showToast('Новий урок успішно додано в календар!');
+            if (currentUser.role === 'student') renderStudentDashboard();
+            if (currentUser.role === 'teacher') renderTeacherDashboard();
+        }
+
+        // --- ADMIN / CURATOR LOGIC ---
+        function openAdminModal() {
+            document.getElementById('modal-admin').classList.remove('hidden');
+            renderAdminLists();
+        }
+
+        function switchAdminTab(tab) {
+            if (tab === 'students') {
+                document.getElementById('admin-tab-students').classList.remove('hidden');
+                document.getElementById('admin-tab-teachers').classList.add('hidden');
+                document.getElementById('tab-btn-students').className = 'px-4 py-2 font-bold border-b-4 border-yellow-400';
+                document.getElementById('tab-btn-teachers').className = 'px-4 py-2 font-bold text-gray-500';
+            } else {
+                document.getElementById('admin-tab-students').classList.add('hidden');
+                document.getElementById('admin-tab-teachers').classList.remove('hidden');
+                document.getElementById('tab-btn-students').className = 'px-4 py-2 font-bold text-gray-500';
+                document.getElementById('tab-btn-teachers').className = 'px-4 py-2 font-bold border-b-4 border-purple-400';
+            }
+        }
+
+        function toggleGroupSelect() {
+            const type = document.getElementById('reg-student-type').value;
+            const container = document.getElementById('group-select-container');
+            if (type === 'group') {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        function registerStudent(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-student-name').value;
+            const log = document.getElementById('reg-student-login').value;
+            const pass = document.getElementById('reg-student-pass').value;
+            const type = document.getElementById('reg-student-type').value;
+            const group = document.getElementById('reg-student-group').value || 'Група 1.6';
+
+            const newStudent = {
+                id: 'u_' + Date.now(),
+                login: log,
+                pass: pass,
+                role: 'student',
+                name: name,
+                avatar: 'https://placehold.co/100x100/111827/ffffff?text=Учень',
+                type: type,
+                group: type === 'group' ? group : null,
+                teacherId: currentUser.id
+            };
+
+            users.push(newStudent);
+            saveData();
+            renderAdminLists();
+            showToast(`Учня ${name} зареєстровано!`);
+        }
+
+        function registerTeacher(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-teacher-name').value;
+            const log = document.getElementById('reg-teacher-login').value;
+            const pass = document.getElementById('reg-teacher-pass').value;
+            const groupsStr = document.getElementById('reg-teacher-groups').value;
+            const groupsArr = groupsStr ? groupsStr.split(',').map(g => g.trim()) : ['Група 1.6'];
+
+            const newTeacher = {
+                id: 't_' + Date.now(),
+                login: log,
+                pass: pass,
+                role: 'teacher',
+                name: name,
+                avatar: 'https://placehold.co/100x100/111827/ffffff?text=Teacher',
+                groups: groupsArr,
+                isCurator: false
+            };
+
+            users.push(newTeacher);
+            saveData();
+            renderAdminLists();
+            showToast(`Вчителя ${name} додано до системи!`);
+        }
+
+        function renderAdminLists() {
+            // Students list
+            const stList = document.getElementById('admin-students-list');
+            const stUsers = users.filter(u => u.role === 'student');
+            stList.innerHTML = stUsers.map(s => `
+                <div class="p-2 bg-gray-100 rounded-lg flex justify-between items-center text-xs">
+                    <div>
+                        <span class="font-bold">${s.name}</span> (${s.login})
+                        <span class="text-gray-500 ml-2">[${s.type === 'group' ? s.group : 'Індивідуально'}]</span>
+                    </div>
+                    <span class="text-gray-400">ID: ${s.id}</span>
+                </div>
+            `).join('');
+
+            // Teachers list
+            const tcList = document.getElementById('admin-teachers-list');
+            const tcUsers = users.filter(u => u.role === 'teacher');
+            tcList.innerHTML = tcUsers.map(t => `
+                <div class="p-2 bg-purple-50 rounded-lg flex justify-between items-center text-xs border border-purple-200">
+                    <div>
+                        <span class="font-bold">${t.name}</span> (${t.login})
+                        <span class="text-purple-700 ml-2">${t.isCurator ? '★ Куратор' : ''}</span>
+                    </div>
+                    <span class="text-gray-500">${t.groups.join(', ')}</span>
+                </div>
+            `).join('');
+        }
+
+        // --- QUIZ MODULE ---
+        function startLessonQuiz() {
+            document.getElementById('modal-quiz').classList.remove('hidden');
+        }
+
+        function submitQuiz() {
+            closeModal('modal-quiz');
+            grades.push({ studentId: currentUser ? currentUser.id : 'u1', lessonId: 'l4', score: 100 });
+            saveData();
+            showToast('Тест пройдено на 100%! Оцінку додано до загального балу.');
+            if (currentUser && currentUser.role === 'student') renderStudentDashboard();
+        }
+
+        // --- UTILS ---
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
