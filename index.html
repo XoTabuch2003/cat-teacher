@@ -141,10 +141,10 @@
 
       <div style="display: flex; gap: 10px; align-items: center;">
         <div class="user-profile-badge">
-          <div class="avatar-circle">МО</div>
+          <div class="avatar-circle">ОЛ</div>
           <div style="display:flex; flex-direction:column;">
-            <span style="font-weight:700; font-size:0.9rem;">Марія Олександрівна</span>
-            <span style="font-size:0.75rem; color:#6b7280;">Вчитель</span>
+            <span style="font-weight:700; font-size:0.9rem;">Олена Вікторівна</span>
+            <span style="font-size:0.75rem; color:#6b7280;">Куратор</span>
           </div>
         </div>
         <button class="btn" onclick="alert('Кабінет активний!')"><i class="fa-solid fa-user-shield"></i> Куратор</button>
@@ -152,7 +152,7 @@
     </header>
 
     <div class="top-action-bar">
-      <div class="welcome-pill">Вітаємо, Марія Олександрівна</div>
+      <div class="welcome-pill">Вітаємо, Олена Вікторівна (Куратор)</div>
       <div style="display: flex; gap: 10px;">
         <button class="btn btn-yellow" onclick="openModal('modal-create-lesson')"><i class="fa-solid fa-calendar-plus"></i> Додати урок / тему</button>
         <button class="btn btn-purple" onclick="alert('Панель управління вчителями')"><i class="fa-solid fa-user-gear"></i> Керування учнями / вчителями</button>
@@ -273,4 +273,150 @@
       <p style="font-size:0.85rem; color:#6b7280; margin-bottom:15px;">Дата проведення: 2026-11-08</p>
 
       <div style="background:#f8fafc; border:2.5px solid #111827; border-radius:16px; padding:15px; margin-bottom:12px;">
-        <h4 style="margin-bottom:6px;"><i class="fa-solid fa-book-
+        <h4 style="margin-bottom:6px;"><i class="fa-solid fa-book-open"></i> Конспект та Лекція:</h4>
+        <p style="font-size:0.9rem;">Основні правила, лексика та приклади використання матеріалу в реальному мовленні.</p>
+      </div>
+
+      <div style="background:var(--accent-yellow); border:2.5px solid #111827; border-radius:16px; padding:15px;">
+        <h4 style="margin-bottom:6px;"><i class="fa-solid fa-pen-ruler"></i> Домашнє завдання:</h4>
+        <p style="font-size:0.9rem; font-weight:700;">Підготувати текстову відповідь та записати аудіо-вокабуляр.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Group Detail Modal -->
+  <div class="modal-overlay" id="modal-group-detail">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeModal('modal-group-detail')">✕</button>
+      <h3 id="group-title-heading" style="margin-bottom:15px; font-size: 1.2rem; font-weight: 700;">Група 1.6</h3>
+      
+      <div style="display:flex; justify-content:space-between; align-items:center; background:var(--accent-yellow); border:2.5px solid #111827; padding:12px; border-radius:16px; margin-bottom:15px;">
+        <span style="font-size:0.9rem; font-weight:700;">Спільне ДЗ для усієї групи:</span>
+        <button class="btn btn-green" onclick="openModal('modal-create-lesson')"><i class="fa-solid fa-plus"></i> Видати ДЗ групі</button>
+      </div>
+
+      <h4 style="margin-bottom:10px; font-weight:700;">Учні групи:</h4>
+      <div class="item-list">
+        <div class="list-item" onclick="closeModal('modal-group-detail'); openStudentProfileModal('Чаленко Данилко', 'ЧД')">
+          <span>Чаленко Данилко</span>
+          <button class="btn btn-yellow" style="padding:4px 10px; font-size:0.75rem;">Картка учня</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Check Homework Modal -->
+  <div class="modal-overlay" id="modal-check-hw">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeModal('modal-check-hw')">✕</button>
+      <h3><i class="fa-solid fa-magnifying-glass"></i> Перевірка ДЗ: Чаленко Данилко</h3>
+      <p style="font-size:0.85rem; color:#6b7280; margin-bottom:15px;">Урок: Hobbies, Creativity & Entertainment</p>
+
+      <div style="background:#f8fafc; border:2.5px solid #111827; border-radius:16px; padding:15px; margin-bottom:12px;">
+        <strong>Текстова відповідь учня:</strong>
+        <p style="font-size:0.9rem; margin-top:5px;">My favorite movie is Interstellar because of graphics and music.</p>
+      </div>
+
+      <div style="background:var(--accent-yellow); border:2.5px solid #111827; border-radius:16px; padding:15px; margin-bottom:12px;">
+        <strong><i class="fa-solid fa-microphone"></i> Голосове завдання (Вокабуляр):</strong>
+        <div style="margin-top:8px;">
+          <audio controls style="width:100%;"></audio>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Виставити оцінку (%):</label>
+        <input type="number" class="form-control" value="90" min="0" max="100" id="chw-grade-input">
+      </div>
+
+      <button class="btn btn-green" style="width:100%; justify-content:center;" onclick="alert('Оцінку успішно збережено!'); closeModal('modal-check-hw');"><i class="fa-solid fa-check"></i> Зберегти оцінку</button>
+    </div>
+  </div>
+
+  <!-- Add Custom Link Modal -->
+  <div class="modal-overlay" id="modal-add-link">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeModal('modal-add-link')">✕</button>
+      <h3><i class="fa-solid fa-link"></i> Додати корисне посилання</h3>
+      
+      <div class="form-group" style="margin-top:15px;">
+        <label>Назва посилання:</label>
+        <input type="text" id="nl-title" class="form-control" placeholder="наприклад: Zoom / PDF підручник">
+      </div>
+      <div class="form-group">
+        <label>URL посилання:</label>
+        <input type="text" id="nl-url" class="form-control" placeholder="https://...">
+      </div>
+      <div class="form-group">
+        <label>Іконка:</label>
+        <select id="nl-icon" class="form-control">
+          <option value="fa-video">Zoom / Відео</option>
+          <option value="fa-file-pdf">PDF Документ</option>
+          <option value="fa-book">Книги / Підручник</option>
+          <option value="fa-gamepad">Гра / Інтерактив</option>
+        </select>
+      </div>
+
+      <button class="btn btn-yellow" style="width:100%; justify-content:center;" onclick="saveNewLink()"><i class="fa-solid fa-plus"></i> Зберегти посилання</button>
+    </div>
+  </div>
+
+  <!-- Create Lesson Modal -->
+  <div class="modal-overlay" id="modal-create-lesson">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeModal('modal-create-lesson')">✕</button>
+      <h3><i class="fa-solid fa-plus"></i> Створити урок / ДЗ</h3>
+      <div class="form-group" style="margin-top:15px;">
+        <label>Тема уроку:</label>
+        <input type="text" class="form-control" placeholder="наприклад: Travel & Exploring">
+      </div>
+      <div class="form-group">
+        <label>Конспект матеріалу:</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+      <button class="btn btn-green" style="width:100%; justify-content:center;" onclick="alert('Урок успішно створено та опубліковано!'); closeModal('modal-create-lesson');"><i class="fa-solid fa-save"></i> Опублікувати</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    function openStudentProfileModal(name, initials) {
+      document.getElementById('st-modal-name').innerText = name;
+      document.getElementById('st-modal-avatar').innerText = initials;
+      openModal('modal-student-profile');
+    }
+
+    function openGroupModal(groupName) {
+      document.getElementById('group-title-heading').innerText = groupName;
+      openModal('modal-group-detail');
+    }
+
+    function openLessonDetailsModal(title) {
+      document.getElementById('ld-title').innerText = title;
+      openModal('modal-lesson-details');
+    }
+
+    function saveNewLink() {
+      const title = document.getElementById('nl-title').value;
+      const url = document.getElementById('nl-url').value;
+      const icon = document.getElementById('nl-icon').value;
+
+      if(!title) { alert('Введіть назву посилання!'); return; }
+
+      const container = document.getElementById('useful-links-grid-container');
+      const card = document.createElement('a');
+      card.className = 'link-card-user';
+      card.href = url || '#';
+      card.target = '_blank';
+      card.innerHTML = `<i class="fa-solid ${icon}" style="font-size:1.6rem; color:#111827;"></i><span>${title}</span>`;
+      
+      container.appendChild(card);
+      closeModal('modal-add-link');
+      document.getElementById('nl-title').value = '';
+      document.getElementById('nl-url').value = '';
+    }
+  </script>
+</body>
+</html>
