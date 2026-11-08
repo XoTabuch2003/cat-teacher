@@ -29,36 +29,44 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
     header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 15px; flex-wrap: wrap; }
-
+    
+    .logo-container { display: flex; flex-direction: column; align-items: center; position: relative; cursor: pointer; }
+    .curved-text-title {
+      font-size: 0.85rem; font-weight: 700; color: #111827; text-align: center;
+      margin-bottom: -10px; background: var(--accent-yellow); padding: 4px 14px;
+      border-radius: 20px; border: var(--border-width) solid var(--border-color);
+      box-shadow: var(--shadow-neo-sm); z-index: 2;
+    }
     .brand-pill {
       background: var(--card-bg); border: var(--border-width) solid var(--border-color);
-      border-radius: 50px; padding: 10px 24px; display: flex; align-items: center; gap: 12px;
+      border-radius: 50px; padding: 8px 20px; display: flex; align-items: center; gap: 12px;
       box-shadow: var(--shadow-neo-sm); font-weight: 700; font-size: 1.1rem;
     }
 
     .user-profile-badge {
-      display: flex; align-items: center; gap: 12px; background: var(--card-bg);
+      display: flex; align-items: center; gap: 10px; background: var(--card-bg);
       border: var(--border-width) solid var(--border-color); border-radius: 50px;
-      padding: 6px 16px 6px 6px; box-shadow: var(--shadow-neo-sm);
+      padding: 5px 16px 5px 5px; box-shadow: var(--shadow-neo-sm); cursor: pointer;
     }
     .avatar-circle {
-      width: 38px; height: 38px; border-radius: 50%; background: var(--border-color);
+      width: 42px; height: 42px; border-radius: 50%; background: var(--border-color);
       color: #fff; display: flex; align-items: center; justify-content: center;
-      font-weight: 700; overflow: hidden; font-size: 0.8rem;
+      font-weight: 700; overflow: hidden; font-size: 0.85rem; border: 1.5px solid #111827;
+      background-size: cover; background-position: center;
     }
 
     .top-action-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 15px; flex-wrap: wrap; }
     .welcome-pill {
       background: var(--accent-yellow); border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-lg); padding: 12px 28px; font-weight: 700; font-size: 1.2rem;
-      box-shadow: var(--shadow-neo);
+      border-radius: var(--radius-lg); padding: 12px 28px; font-weight: 700; font-size: 1.15rem;
+      box-shadow: var(--shadow-neo); display: flex; align-items: center; gap: 10px;
     }
 
     .btn {
       background: var(--card-bg); border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-md); padding: 10px 20px; font-weight: 700; cursor: pointer;
+      border-radius: var(--radius-md); padding: 10px 18px; font-weight: 700; cursor: pointer;
       box-shadow: var(--shadow-neo-sm); transition: all 0.15s ease; display: inline-flex;
-      align-items: center; gap: 8px; font-size: 0.9rem;
+      align-items: center; gap: 8px; font-size: 0.88rem;
     }
     .btn:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-neo); }
     .btn-yellow { background: var(--accent-yellow); }
@@ -80,20 +88,21 @@
       margin-bottom: 18px; box-shadow: var(--shadow-neo-sm); text-transform: lowercase; font-size: 1.05rem;
     }
 
-    .item-list { display: flex; flex-direction: column; gap: 12px; }
+    .item-list { display: flex; flex-direction: column; gap: 10px; }
     .list-item {
       border: var(--border-width) solid var(--border-color); border-radius: var(--radius-md);
       padding: 12px 16px; background: #fff; cursor: pointer; display: flex; justify-content: space-between;
       align-items: center; transition: all 0.15s; font-size: 0.88rem; font-weight: 700;
     }
     .list-item:hover { background: var(--accent-blue); transform: translateY(-1px); }
+    .list-item.selected { background: var(--accent-yellow); border-color: #000; box-shadow: 2px 2px 0px #111827; }
 
     .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .link-box-add {
       border: var(--border-width) dashed var(--border-color); border-radius: var(--radius-md);
-      padding: 20px; text-align: center; cursor: pointer; font-weight: 700;
+      padding: 16px; text-align: center; cursor: pointer; font-weight: 700;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-      background: #fff; transition: all 0.15s; min-height: 100px;
+      background: #fff; transition: all 0.15s; min-height: 90px;
     }
     .link-box-add:hover { background: var(--accent-yellow); border-style: solid; }
 
@@ -101,26 +110,19 @@
       border: var(--border-width) solid var(--border-color); border-radius: var(--radius-md);
       padding: 12px; text-decoration: none; color: inherit; font-weight: 700;
       display: flex; flex-direction: column; align-items: center; gap: 6px; box-shadow: var(--shadow-neo-sm);
-      background: #fff; min-height: 100px; justify-content: center; text-align: center;
-    }
-
-    .hw-queue-card { margin-top: 10px; }
-    .hw-item {
-      border: var(--border-width) solid var(--border-color); border-radius: var(--radius-md);
-      padding: 15px; display: flex; justify-content: space-between; align-items: center;
-      gap: 15px; flex-wrap: wrap; margin-top: 12px; background: #fff;
+      background: #fff; min-height: 90px; justify-content: center; text-align: center; position: relative;
     }
 
     .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(3px);
+      position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px);
       z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px;
     }
     .modal-box {
       background: #fff; border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-lg); padding: 25px; width: 100%; max-width: 650px;
+      border-radius: var(--radius-lg); padding: 25px; width: 100%; max-width: 820px;
       box-shadow: var(--shadow-neo-lg); max-height: 90vh; overflow-y: auto; position: relative;
     }
-    .close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.3rem; cursor: pointer; font-weight: 700; }
+    .close-btn { position: absolute; top: 18px; right: 20px; background: none; border: none; font-size: 1.4rem; cursor: pointer; font-weight: 700; }
 
     .form-group { margin-bottom: 15px; }
     .form-group label { display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.88rem; }
@@ -128,295 +130,786 @@
       width: 100%; padding: 10px 14px; border: var(--border-width) solid var(--border-color);
       border-radius: var(--radius-sm); font-size: 0.9rem;
     }
+
+    .draggable-student {
+      padding: 8px 12px; border: 2px solid #111827; border-radius: 10px; background: #fff;
+      cursor: grab; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px; margin: 4px;
+      box-shadow: 2px 2px 0px #111827; user-select: none;
+    }
+    .draggable-student:active { cursor: grabbing; }
+    .dropzone-group {
+      border: 2px dashed #111827; border-radius: 14px; padding: 12px; min-height: 70px;
+      background: #f8fafc; margin-bottom: 12px;
+    }
+    .opt-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .btn-del { color: #dc2626; cursor: pointer; margin-left: 4px; font-weight: 700; }
+
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 15px; text-align: center; }
+    .cal-day-header { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; padding: 6px 0; }
+    .cal-day-cell {
+      border: 2px solid #111827; border-radius: 10px; min-height: 75px; padding: 6px; background: #fff;
+      cursor: pointer; text-align: left; display: flex; flex-direction: column; justify-content: space-between;
+      box-shadow: 2px 2px 0px #111827; transition: all 0.15s;
+    }
+    .cal-day-cell:hover { background: var(--accent-yellow); transform: translateY(-1px); }
+    .cal-date-num { font-weight: 700; font-size: 0.85rem; }
+    .cal-event-tag {
+      background: var(--accent-blue); font-size: 0.68rem; font-weight: 700; padding: 2px 4px; border-radius: 4px;
+      border: 1px solid #111827; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 2px;
+    }
+
+    .voice-recorder-box {
+      background: var(--accent-purple); border: 2.5px solid #111827; border-radius: 16px;
+      padding: 15px; margin-top: 15px; text-align: center; box-shadow: var(--shadow-neo-sm);
+    }
+    .mic-btn {
+      width: 55px; height: 55px; border-radius: 50%; border: 2.5px solid #111827; background: #ef4444; color: #fff;
+      font-size: 1.4rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-neo-sm); transition: all 0.2s; margin: 10px 0;
+    }
+    .mic-btn.recording { animation: pulse 1s infinite; background: #dc2626; }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
   </style>
 </head>
 <body>
 
   <div class="container">
     <header>
-      <div class="brand-pill">
-        <i class="fa-solid fa-cat"></i>
-        <span>Школа англійської мови Cat teacher</span>
+      <div class="logo-container">
+        <div class="curved-text-title">Школа англійської мови Cat teacher</div>
+        <div class="brand-pill" style="margin-top: 5px;">
+          <i class="fa-solid fa-cat" style="font-size: 1.4rem;"></i>
+          <span>Cat teacher</span>
+        </div>
       </div>
 
       <div style="display: flex; gap: 10px; align-items: center;">
-        <div class="user-profile-badge">
-          <div class="avatar-circle">ОВ</div>
+        <div class="user-profile-badge" onclick="triggerProfilePhotoUpload()" title="Натисніть для зміни фото профілю">
+          <div class="avatar-circle" id="header-avatar" style="background-image: url('https://raw.githubusercontent.com/twitter/twemoji/master/assets/72x72/1f431.png');"></div>
           <div style="display:flex; flex-direction:column;">
-            <span style="font-weight:700; font-size:0.9rem;">Олена Вікторівна</span>
-            <span style="font-size:0.75rem; color:#6b7280;">Куратор</span>
+            <span style="font-weight:700; font-size:0.9rem;" id="header-name">Олена Вікторівна</span>
+            <span style="font-size:0.75rem; color:#6b7280;" id="header-role">Куратор / Вчитель</span>
           </div>
         </div>
-        <button class="btn" onclick="alert('Кабінет куратора активний!')"><i class="fa-solid fa-user-shield"></i> Куратор</button>
+        <input type="file" id="profile-photo-input" style="display:none;" accept="image/*" onchange="uploadProfilePhoto(event)">
+        <button class="btn btn-yellow" onclick="toggleUserRole()"><i class="fa-solid fa-arrows-rotate"></i> Змінити роль</button>
       </div>
     </header>
 
-    <div class="top-action-bar">
-      <div class="welcome-pill">Вітаємо, Олена Вікторівна (Куратор)</div>
-      <div style="display: flex; gap: 10px;">
-        <button class="btn btn-yellow" onclick="openModal('modal-create-lesson')"><i class="fa-solid fa-calendar-plus"></i> Додати урок / тему</button>
-        <button class="btn btn-purple" onclick="alert('Панель керування')"><i class="fa-solid fa-user-gear"></i> Керування учнями / вчителями</button>
-      </div>
-    </div>
-
-    <!-- 3 MAIN BOARDS -->
-    <div class="dashboard-grid">
-      
-      <!-- Panel 1: Groups -->
-      <div class="neo-card">
-        <div class="card-title-pill">групи</div>
-        <div class="item-list">
-          <div class="list-item" onclick="openGroupModal('Група 1.6')"><span>Група 1.6</span> <i class="fa-solid fa-chevron-right"></i></div>
-          <div class="list-item" onclick="openGroupModal('Група 1.5')"><span>Група 1.5</span> <i class="fa-solid fa-chevron-right"></i></div>
-          <div class="list-item" onclick="openGroupModal('Група 1.4')"><span>Група 1.4</span> <i class="fa-solid fa-chevron-right"></i></div>
+    <!-- TEACHER VIEW -->
+    <div id="teacher-view">
+      <div class="top-action-bar">
+        <div class="welcome-pill">
+          <i class="fa-solid fa-chalkboard-user"></i>
+          <span>Вітаємо, Олена Вікторівна! Кабінет викладача</span>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button class="btn btn-purple" onclick="openModal('modal-calendar')"><i class="fa-solid fa-calendar-days"></i> Календар уроків</button>
+          <button class="btn btn-green" onclick="openModal('modal-gradebook')"><i class="fa-solid fa-book-open"></i> Загальний журнал</button>
+          <button class="btn btn-yellow" onclick="openCreatorModal('Загальне призначення')"><i class="fa-solid fa-plus"></i> Додати урок / ДЗ</button>
         </div>
       </div>
 
-      <!-- Panel 2: Individual Students -->
-      <div class="neo-card">
-        <div class="card-title-pill">індивідуальні</div>
-        <div class="item-list">
-          <div class="list-item" onclick="openStudentProfileModal('Чаленко Філіція', 'ЧФ')">
-            <div style="display:flex; align-items:center; gap:10px;">
-              <div class="avatar-circle" style="width:28px; height:28px;">ЧФ</div>
-              <span>Чаленко Філіція</span>
+      <div class="dashboard-grid">
+        <div class="neo-card">
+          <div class="card-title-pill">групи</div>
+          <div class="item-list" id="main-groups-container"></div>
+        </div>
+
+        <div class="neo-card">
+          <div class="card-title-pill">індивідуальні</div>
+          <div class="item-list" id="main-indiv-container"></div>
+        </div>
+
+        <div class="neo-card">
+          <div class="card-title-pill">корисні посилання</div>
+          <div class="links-grid" id="useful-links-grid">
+            <div class="link-box-add" onclick="openModal('modal-add-link')">
+              <i class="fa-solid fa-plus" style="font-size: 1.5rem;"></i>
+              <span>Додати</span>
             </div>
-            <i class="fa-solid fa-chevron-right"></i>
           </div>
-          <div class="list-item" onclick="openStudentProfileModal('Чаленко Остап', 'ЧО')">
-            <div style="display:flex; align-items:center; gap:10px;">
-              <div class="avatar-circle" style="width:28px; height:28px;">ЧО</div>
-              <span>Чаленко Остап</span>
-            </div>
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 3: Useful Links with Plus button ONLY -->
-      <div class="neo-card">
-        <div class="card-title-pill">корисні посилання</div>
-        <div class="links-grid" id="useful-links-grid-container">
-          <div class="link-box-add" onclick="openModal('modal-add-link')">
-            <i class="fa-solid fa-plus" style="font-size: 1.8rem;"></i>
-            <span>Додати</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Pending Homeworks Section -->
-    <div class="neo-card hw-queue-card">
-      <div style="font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-clipboard-check" style="color: #eab308;"></i> Домашні завдання на перевірку
-      </div>
-      <div class="hw-item">
-        <div>
-          <strong>Чаленко Данилко</strong> <span style="font-size:0.75rem; background:var(--accent-yellow); padding:2px 8px; border-radius:10px; border:1px solid #000;">Група 1.6</span>
-          <div style="font-size:0.8rem; color:#6b7280; margin-top:2px;">Урок: Hobbies, Creativity & Entertainment</div>
-          <div style="font-size:0.8rem; color:green; margin-top:3px;"><i class="fa-solid fa-microphone"></i> Додано голосове Д/З + PDF файл</div>
-        </div>
-        <div style="display:flex; gap:8px; align-items:center;">
-          <button class="btn btn-blue" onclick="openModal('modal-check-hw')"><i class="fa-solid fa-play"></i> Прослухати</button>
-          <input type="number" placeholder="Оцінка %" style="width:75px; padding:8px; border:2.5px solid #111827; border-radius:10px; text-align:center; font-weight:700;" id="quick-grade">
-          <button class="btn btn-green" onclick="alert('Оцінку успішно збережено!')"><i class="fa-solid fa-check"></i> Оцінити</button>
         </div>
       </div>
     </div>
 
+    <!-- STUDENT VIEW -->
+    <div id="student-view" style="display: none;">
+      <div class="top-action-bar">
+        <div class="welcome-pill" id="student-welcome-title">
+          <i class="fa-solid fa-user-graduate"></i>
+          <span>Вітаємо у кабінеті, Данилко!</span>
+        </div>
+        <div style="font-weight: 700; background: var(--accent-green); padding: 10px 18px; border-radius: var(--radius-md); border: var(--border-width) solid #111827; box-shadow: var(--shadow-neo-sm);" id="student-avg-score-badge">Середня оцінка: 90%</div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="neo-card">
+          <div class="card-title-pill" style="background:var(--accent-green);">Пройдений матеріал</div>
+          <div class="item-list" id="student-tasks-completed">
+            <div class="list-item" onclick="viewMaterialDetails('Everyday Life & Routines')"><span>Everyday Life & Routines</span></div>
+          </div>
+        </div>
+
+        <div class="neo-card">
+          <div class="card-title-pill" style="background:var(--accent-yellow);">Завдане ДЗ та тести</div>
+          <div class="item-list" id="student-tasks-active">
+            <div class="list-item" onclick="openModal('modal-submit-hw')"><span>Hobbies & Entertainment (Виконати)</span></div>
+          </div>
+        </div>
+
+        <div class="neo-card">
+          <div class="card-title-pill" style="background:var(--accent-purple);">Наступні уроки</div>
+          <div class="item-list" id="student-upcoming-lessons">
+            <div class="list-item" onclick="viewMaterialDetails('Society, Tech & Big Ideas')"><span>Society, Tech & Big Ideas</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- MODALS -->
 
-  <!-- Student Profile Modal -->
-  <div class="modal-overlay" id="modal-student-profile">
+  <!-- 1. Student Personal Cabinet Modal -->
+  <div class="modal-overlay" id="modal-student-cabinet">
     <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-student-profile')">✕</button>
-      <div style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
-        <div class="avatar-circle" style="width:50px; height:50px; font-size:1.1rem;" id="st-modal-avatar">ЧФ</div>
-        <div>
-          <h3 id="st-modal-name">Чаленко Філіція</h3>
-          <span style="background:var(--accent-yellow); padding:2px 8px; border-radius:10px; font-size:0.75rem; border:1.5px solid #000;">Індивідуально</span>
+      <button class="close-btn" onclick="closeModal('modal-student-cabinet')">✕</button>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div class="avatar-circle" style="width: 55px; height: 55px; font-size: 1.2rem;" id="sc-avatar">ЧД</div>
+          <div>
+            <h3 id="sc-student-name" style="font-size: 1.35rem;">Учень</h3>
+            <span style="background: var(--accent-yellow); padding: 3px 10px; border-radius: 12px; font-size: 0.78rem; border: 1.5px solid #000; font-weight:700;" id="sc-student-group">Група 1.6</span>
+          </div>
+        </div>
+        <button class="btn btn-green" id="sc-add-btn"><i class="fa-solid fa-plus"></i> Назначити Урок / ДЗ</button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+        <div style="border: 2.5px solid #111827; padding: 12px; border-radius: 16px; background: var(--accent-green); text-align: center; box-shadow: var(--shadow-neo-sm);">
+          <div style="font-size: 0.8rem; font-weight: 700;">Середня оцінка (Тести + ДЗ)</div>
+          <div style="font-size: 1.8rem; font-weight: 700; color: #16a34a;" id="sc-student-score">90%</div>
+        </div>
+        <div style="border: 2.5px solid #111827; padding: 12px; border-radius: 16px; background: var(--accent-blue); text-align: center; box-shadow: var(--shadow-neo-sm);">
+          <div style="font-size: 0.8rem; font-weight: 700;">Статус виконання</div>
+          <div style="font-size: 1.2rem; font-weight: 700; margin-top:6px;" id="sc-student-status">2 виконано / 1 активне</div>
         </div>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:20px;">
-        <div style="border:2.5px solid #111827; padding:15px; border-radius:16px; background:var(--accent-green); text-align:center;">
-          <div style="font-size:0.8rem; font-weight:700;">Середня оцінка</div>
-          <div style="font-size:1.8rem; font-weight:700;">87%</div>
-        </div>
-        <div style="border:2.5px solid #111827; padding:15px; border-radius:16px; background:var(--accent-blue); display:flex; align-items:center; justify-content:center;">
-          <button class="btn btn-yellow" onclick="openModal('modal-create-lesson')"><i class="fa-solid fa-pen"></i> Особисте ДЗ</button>
-        </div>
-      </div>
-
-      <h4 style="margin-bottom:10px; font-weight:700;">Уроки та статус виконання:</h4>
-      <div class="item-list">
-        <div class="list-item" onclick="openLessonDetailsModal('Everyday Life & Routines')">
-          <span>Everyday Life & Routines</span>
-          <span style="background:var(--accent-green); padding:2px 8px; border-radius:8px; border:1px solid #000; font-size:0.75rem;">Завершено</span>
-        </div>
-        <div class="list-item" onclick="openLessonDetailsModal('Hobbies, Creativity & Entertainment')">
-          <span>Hobbies, Creativity & Entertainment</span>
-          <span style="background:var(--accent-yellow); padding:2px 8px; border-radius:8px; border:1px solid #000; font-size:0.75rem;">Активне ДЗ</span>
-        </div>
-      </div>
+      <h4 style="margin-bottom: 10px; font-weight: 700;"><i class="fa-solid fa-list-check"></i> Усі завдання, теми та матеріали учня:</h4>
+      <div class="item-list" id="sc-student-tasks-list"></div>
     </div>
   </div>
 
-  <!-- Lesson Details View Modal -->
-  <div class="modal-overlay" id="modal-lesson-details">
+  <!-- 2. View/Edit Lesson & Homework Material Modal -->
+  <div class="modal-overlay" id="modal-view-material">
     <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-lesson-details')">✕</button>
-      <div class="card-title-pill" id="ld-title" style="text-align:left; background:var(--accent-yellow);">Тема уроку</div>
-      <p style="font-size:0.85rem; color:#6b7280; margin-bottom:15px;">Дата проведення: 2026-11-08</p>
-
-      <div style="background:#f8fafc; border:2.5px solid #111827; border-radius:16px; padding:15px; margin-bottom:12px;">
-        <h4 style="margin-bottom:6px;"><i class="fa-solid fa-book-open"></i> Конспект та Лекція:</h4>
-        <p style="font-size:0.9rem;">Основні правила, лексика та приклади використання матеріалу в реальному мовленні.</p>
-      </div>
-
-      <div style="background:var(--accent-yellow); border:2.5px solid #111827; border-radius:16px; padding:15px;">
-        <h4 style="margin-bottom:6px;"><i class="fa-solid fa-pen-ruler"></i> Домашнє завдання:</h4>
-        <p style="font-size:0.9rem; font-weight:700;">Підготувати текстову відповідь та записати аудіо-вокабуляр.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Group Detail Modal -->
-  <div class="modal-overlay" id="modal-group-detail">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-group-detail')">✕</button>
-      <h3 id="group-title-heading" style="margin-bottom:15px; font-size: 1.2rem; font-weight: 700;">Група 1.6</h3>
+      <button class="close-btn" onclick="closeModal('modal-view-material')">✕</button>
+      <h3 style="margin-bottom: 15px;" id="vm-title"><i class="fa-solid fa-book-open"></i> Everyday Life & Routines</h3>
       
-      <div style="display:flex; justify-content:space-between; align-items:center; background:var(--accent-yellow); border:2.5px solid #111827; padding:12px; border-radius:16px; margin-bottom:15px;">
-        <span style="font-size:0.9rem; font-weight:700;">Спільне ДЗ для усієї групи:</span>
-        <button class="btn btn-green" onclick="openModal('modal-create-lesson')"><i class="fa-solid fa-plus"></i> Видати ДЗ групі</button>
+      <div style="background: var(--accent-blue); padding: 15px; border-radius: 14px; border: 2.5px solid #111827; margin-bottom: 15px; box-shadow: var(--shadow-neo-sm);">
+        <h4 style="font-weight:700; margin-bottom:6px;"><i class="fa-solid fa-align-left"></i> Конспект та деталі уроку:</h4>
+        <p id="vm-desc" style="font-size:0.9rem; line-height:1.5;">У цьому уроці розглядаються основні фразові дієслова для опису щоденного розпорядку дня, вираження часу та звичок (Beginner - Elementary).</p>
       </div>
 
-      <h4 style="margin-bottom:10px; font-weight:700;">Учні групи:</h4>
-      <div class="item-list">
-        <div class="list-item" onclick="closeModal('modal-group-detail'); openStudentProfileModal('Чаленко Данилко', 'ЧД')">
-          <span>Чаленко Данилко</span>
-          <button class="btn btn-yellow" style="padding:4px 10px; font-size:0.75rem;">Картка учня</button>
+      <div style="border: 2.5px solid #111827; padding: 15px; border-radius: 14px; background: #fff; margin-bottom: 15px;">
+        <h4 style="font-weight:700; margin-bottom:8px;"><i class="fa-solid fa-paperclip"></i> Прикріплені матеріали:</h4>
+        <div id="vm-files-list">
+          <div class="list-item" style="margin-bottom:6px;"><span id="vm-file-name"><i class="fa-solid fa-file-pdf"></i> Lesson_Notes_Routines.pdf</span> <button class="btn btn-yellow" style="padding:4px 8px; font-size:0.75rem;">Завантажити</button></div>
         </div>
+      </div>
+
+      <div style="display:flex; gap:10px; justify-content:flex-end;">
+        <button class="btn btn-yellow" onclick="editCurrentMaterial()"><i class="fa-solid fa-pen"></i> Редагувати матеріал</button>
+        <button class="btn btn-green" onclick="closeModal('modal-view-material')">Закрити</button>
       </div>
     </div>
   </div>
 
-  <!-- Check Homework Modal -->
-  <div class="modal-overlay" id="modal-check-hw">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-check-hw')">✕</button>
-      <h3><i class="fa-solid fa-magnifying-glass"></i> Перевірка ДЗ: Чаленко Данилко</h3>
-      <p style="font-size:0.85rem; color:#6b7280; margin-bottom:15px;">Урок: Hobbies, Creativity & Entertainment</p>
-
-      <div style="background:#f8fafc; border:2.5px solid #111827; border-radius:16px; padding:15px; margin-bottom:12px;">
-        <strong>Текстова відповідь учня:</strong>
-        <p style="font-size:0.9rem; margin-top:5px;">My favorite movie is Interstellar because of graphics and music.</p>
+  <!-- 3. Interactive Notion-Style Calendar Modal -->
+  <div class="modal-overlay" id="modal-calendar">
+    <div class="modal-box" style="max-width: 900px;">
+      <button class="close-btn" onclick="closeModal('modal-calendar')">✕</button>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <h3><i class="fa-solid fa-calendar-days"></i> Календар планування уроків (Notion-style)</h3>
+        <span style="font-size:0.85rem; font-weight:700; background:var(--accent-yellow); padding:4px 12px; border-radius:20px; border:1.5px solid #000;">Листопад 2026</span>
       </div>
-
-      <div style="background:var(--accent-yellow); border:2.5px solid #111827; border-radius:16px; padding:15px; margin-bottom:12px;">
-        <strong><i class="fa-solid fa-microphone"></i> Голосове завдання (Вокабуляр):</strong>
-        <div style="margin-top:8px;">
-          <audio controls style="width:100%;"></audio>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Виставити оцінку (%):</label>
-        <input type="number" class="form-control" value="90" min="0" max="100" id="chw-grade-input">
-      </div>
-
-      <button class="btn btn-green" style="width:100%; justify-content:center;" onclick="alert('Оцінку успішно збережено!'); closeModal('modal-check-hw');"><i class="fa-solid fa-check"></i> Зберегти оцінку</button>
-    </div>
-  </div>
-
-  <!-- Add Custom Link Modal -->
-  <div class="modal-overlay" id="modal-add-link">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-add-link')">✕</button>
-      <h3><i class="fa-solid fa-link"></i> Додати корисне посилання</h3>
+      <p style="font-size:0.85rem; color:#6b7280; margin-bottom:10px;">Натисніть на будь-яку дату, щоб запланувати тему або переглянути урок:</p>
       
-      <div class="form-group" style="margin-top:15px;">
-        <label>Назва посилання:</label>
-        <input type="text" id="nl-title" class="form-control" placeholder="наприклад: Zoom / PDF підручник">
+      <div class="calendar-grid">
+        <div class="cal-day-header">Пн</div><div class="cal-day-header">Вт</div><div class="cal-day-header">Ср</div><div class="cal-day-header">Чт</div><div class="cal-day-header">Пт</div><div class="cal-day-header">Сб</div><div class="cal-day-header">Нд</div>
+        <div class="cal-day-cell" onclick="planLessonForDate('1 Листопада')"><span class="cal-date-num">1</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('2 Листопада')"><span class="cal-date-num">2</span><div class="cal-event-tag">Grammar Test</div></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('3 Листопада')"><span class="cal-date-num">3</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('4 Листопада')"><span class="cal-date-num">4</span><div class="cal-event-tag">Speaking Session</div></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('5 Листопада')"><span class="cal-date-num">5</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('6 Листопада')"><span class="cal-date-num">6</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('7 Листопада')"><span class="cal-date-num">7</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('8 Листопада')"><span class="cal-date-num">8</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('9 Листопада')"><span class="cal-date-num">9</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('10 Листопада')"><span class="cal-date-num">10</span><div class="cal-event-tag">Future Tenses</div></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('11 Листопада')"><span class="cal-date-num">11</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('12 Листопада')"><span class="cal-date-num">12</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('13 Листопада')"><span class="cal-date-num">13</span></div>
+        <div class="cal-day-cell" onclick="planLessonForDate('14 Листопада')"><span class="cal-date-num">14</span></div>
       </div>
+    </div>
+  </div>
+
+  <!-- 4. Universal Creator / Editor Modal -->
+  <div class="modal-overlay" id="modal-creator">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeModal('modal-creator')">✕</button>
+      <h3 style="margin-bottom: 15px;" id="creator-modal-header"><i class="fa-solid fa-plus"></i> Додати урок або ДЗ</h3>
+      
       <div class="form-group">
-        <label>URL посилання:</label>
-        <input type="text" id="nl-url" class="form-control" placeholder="https://...">
-      </div>
-      <div class="form-group">
-        <label>Іконка:</label>
-        <select id="nl-icon" class="form-control">
-          <option value="fa-video">Zoom / Відео</option>
-          <option value="fa-file-pdf">PDF Документ</option>
-          <option value="fa-book">Книги / Підручник</option>
-          <option value="fa-gamepad">Гра / Інтерактив</option>
+        <label>Виберіть дію:</label>
+        <select id="creation-mode-select" class="form-control" onchange="toggleCreationMode()">
+          <option value="recent">Обрати зі списку останніх матеріалів</option>
+          <option value="new">Створити новий з нуля</option>
         </select>
       </div>
 
-      <button class="btn btn-yellow" style="width:100%; justify-content:center;" onclick="saveNewLink()"><i class="fa-solid fa-plus"></i> Зберегти посилання</button>
+      <div id="recent-materials-box" style="margin-bottom: 15px;">
+        <label style="font-weight:700; margin-bottom:8px; display:block;">Останні уроки та ДЗ (натисніть, щоб обрати):</label>
+        <div class="item-list" id="recent-selectable-list">
+          <div class="list-item" onclick="selectRecentItem(this, 'Everyday Life & Routines (Урок)')"><span>Everyday Life & Routines (Урок)</span> <i class="fa-solid fa-check"></i></div>
+          <div class="list-item" onclick="selectRecentItem(this, 'Hobbies & Entertainment (ДЗ)')"><span>Hobbies & Entertainment (ДЗ з тестом)</span> <i class="fa-solid fa-check"></i></div>
+          <div class="list-item" onclick="selectRecentItem(this, 'Travel & Exploring (Урок)')"><span>Travel & Exploring (Урок)</span> <i class="fa-solid fa-check"></i></div>
+        </div>
+      </div>
+
+      <div id="new-material-form" style="display: none;">
+        <div class="form-group">
+          <label>Тип контенту:</label>
+          <select id="creator-type" class="form-control" onchange="toggleTestConstructor()">
+            <option value="lesson">Урок / Матеріал</option>
+            <option value="hw">Домашнє завдання (з тестами)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Назва предмета/теми:</label>
+          <input type="text" id="new-item-title" class="form-control" placeholder="наприклад: Future Tenses & Vocabulary">
+        </div>
+
+        <div class="form-group">
+          <label>Опис / Конспект / Інструкція:</label>
+          <textarea id="new-item-desc" class="form-control" rows="3" placeholder="Введіть текстовий конспект або завдання..."></textarea>
+        </div>
+
+        <div style="background:var(--accent-blue); padding:15px; border-radius:12px; border:2.5px solid #111827; margin-bottom:15px;">
+          <label style="font-weight:700; margin-bottom:8px; display:block;"><i class="fa-solid fa-paperclip"></i> Прикріпити матеріали (PDF, Word, відео):</label>
+          <input type="file" class="form-control" style="background:#fff; margin-bottom:8px;" multiple>
+          <input type="text" class="form-control" placeholder="Посилання на Google Doc / Zoom / YouTube...">
+        </div>
+
+        <div id="test-section" style="background:var(--accent-yellow); padding:15px; border-radius:12px; border:2.5px solid #111827; margin-bottom:15px; display:none;">
+          <label style="font-weight:700; margin-bottom:10px; display:block;"><i class="fa-solid fa-list-check"></i> Конструктор тестів:</label>
+          <div id="tests-container"></div>
+          <button class="btn btn-blue" style="font-size:0.8rem; margin-top:10px;" onclick="addTestQuestion()"><i class="fa-solid fa-plus"></i> Додати запитання</button>
+        </div>
+      </div>
+
+      <button class="btn btn-green" style="width:100%; justify-content:center; margin-top:10px;" onclick="confirmAssignOrPublish()"><i class="fa-solid fa-paper-plane"></i> Підтвердити та призначити</button>
     </div>
   </div>
 
-  <!-- Create Lesson Modal -->
-  <div class="modal-overlay" id="modal-create-lesson">
+  <!-- 5. Group Details Modal -->
+  <div class="modal-overlay" id="modal-group-detail">
     <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-create-lesson')">✕</button>
-      <h3><i class="fa-solid fa-plus"></i> Створити урок / ДЗ</h3>
+      <button class="close-btn" onclick="closeModal('modal-group-detail')">✕</button>
+      <h3 id="group-modal-title" style="margin-bottom: 15px;">Група</h3>
+      <div style="display:flex; justify-content:space-between; align-items:center; background:var(--accent-yellow); border:2.5px solid #111827; padding:12px; border-radius:16px; margin-bottom:15px; box-shadow: var(--shadow-neo-sm);">
+        <span style="font-size:0.9rem; font-weight:700;">Надіслати урок або ДЗ групі:</span>
+        <button class="btn btn-green" id="group-add-btn"><i class="fa-solid fa-plus"></i> Створити / Обрати</button>
+      </div>
+      <h4 style="margin-bottom:10px; font-weight:700;">Учні у цій групі:</h4>
+      <div class="item-list" id="group-students-list-view"></div>
+    </div>
+  </div>
+
+  <!-- 6. Useful Link Modal -->
+  <div class="modal-overlay" id="modal-add-link">
+    <div class="modal-box" style="max-width: 450px;">
+      <button class="close-btn" onclick="closeModal('modal-add-link')">✕</button>
+      <h3 style="margin-bottom: 15px;"><i class="fa-solid fa-link"></i> Додати корисне посилання</h3>
+      <div class="form-group"><label>Назва:</label><input type="text" id="nl-title" class="form-control" placeholder="Zoom"></div>
+      <div class="form-group"><label>URL посилання:</label><input type="text" id="nl-url" class="form-control" placeholder="https://..."></div>
+      <div class="form-group"><label>Іконка:</label>
+        <select id="nl-icon" class="form-control">
+          <option value="fa-video">Zoom / Відео</option>
+          <option value="fa-file-pdf">PDF Документ</option>
+          <option value="fa-book">Підручник / Словник</option>
+          <option value="fa-gamepad">Інтерактивна гра</option>
+        </select>
+      </div>
+      <button class="btn btn-yellow" style="width:100%; justify-content:center;" onclick="saveNewLink()">Зберегти посилання</button>
+    </div>
+  </div>
+
+  <!-- 7. General Gradebook Modal -->
+  <div class="modal-overlay" id="modal-gradebook">
+    <div class="modal-box" style="max-width: 900px;">
+      <button class="close-btn" onclick="closeModal('modal-gradebook')">✕</button>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px; flex-wrap: wrap; gap:10px;">
+        <h3><i class="fa-solid fa-book-open"></i> Керування учнями та групами</h3>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-purple" style="padding: 6px 12px; font-size:0.8rem;" onclick="addNewStudentPrompt()"><i class="fa-solid fa-user-plus"></i> + Зареєструвати учня</button>
+          <button class="btn btn-yellow" style="padding: 6px 12px; font-size:0.8rem;" onclick="createNewGroupPrompt()"><i class="fa-solid fa-folder-plus"></i> + Створити групу</button>
+        </div>
+      </div>
+      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 15px;">Перетягуйте учнів у групи або видаляйте за допомогою кнопок ✕ / 🗑️:</p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="border: 2.5px solid #111827; padding: 15px; border-radius: 16px; background: #fff; box-shadow: var(--shadow-neo-sm);">
+          <h4 style="margin-bottom: 10px; font-weight: 700;">Усі учні в базі:</h4>
+          <div id="master-students-list" style="min-height: 200px;" ondragover="allowDrop(event)" ondrop="dropToMaster(event)"></div>
+        </div>
+
+        <div style="border: 2.5px solid #111827; padding: 15px; border-radius: 16px; background: #fff; box-shadow: var(--shadow-neo-sm);">
+          <h4 style="margin-bottom: 10px; font-weight: 700;">Групи:</h4>
+          <div id="gradebook-groups-container" style="max-height: 350px; overflow-y: auto;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Student Submit HW Modal -->
+  <div class="modal-overlay" id="modal-submit-hw">
+    <div class="modal-box">
+      <button class="close-btn" onclick="closeModal('modal-submit-hw')">✕</button>
+      <h3><i class="fa-solid fa-upload"></i> Здача завдання & Голосове випробовування (Vocabulary)</h3>
+      
       <div class="form-group" style="margin-top:15px;">
-        <label>Тема уроку:</label>
-        <input type="text" class="form-control" placeholder="наприклад: Travel & Exploring">
+        <label>Текстова відповідь:</label>
+        <textarea class="form-control" rows="3" placeholder="Введіть текст або напишіть відповіді..."></textarea>
       </div>
+
       <div class="form-group">
-        <label>Конспект матеріалу:</label>
-        <textarea class="form-control" rows="3"></textarea>
+        <label>Прикріпити документ (PDF, Word, Google Doc):</label>
+        <input type="file" class="form-control" multiple>
       </div>
-      <button class="btn btn-green" style="width:100%; justify-content:center;" onclick="alert('Урок успішно створено та опубліковано!'); closeModal('modal-create-lesson');"><i class="fa-solid fa-save"></i> Опублікувати</button>
+
+      <div class="voice-recorder-box">
+        <label style="font-weight:700; display:block;"><i class="fa-solid fa-microphone"></i> Голосове завдання (Вимова та Vocabulary):</label>
+        <p style="font-size:0.8rem; color:#4b5563; margin-top:4px;">Натисніть мікрофон для запису вимови слів. Вчитель прослухає запис та виставити оцінку.</p>
+        <button class="mic-btn" id="record-mic-btn" onclick="toggleVoiceRecord()"><i class="fa-solid fa-microphone"></i></button>
+        <div id="record-status" style="font-size:0.85rem; font-weight:700; color:#dc2626; display:none;">● Запис йде... Говоріть у мікрофон</div>
+        <audio id="audio-preview" controls style="display:none; width:100%; margin-top:10px;"></audio>
+      </div>
+
+      <button class="btn btn-green" style="width:100%; justify-content:center; margin-top:15px;" onclick="alert('Завдання та голосовий запис успішно надруковано й надіслано вчителю!'); closeModal('modal-submit-hw');"><i class="fa-solid fa-check"></i> Надіслати вчителю</button>
     </div>
   </div>
 
   <script>
-    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    let currentRole = 'teacher';
+    let currentAssignTarget = 'Чаленко Данилко';
+    let selectedRecentTitle = '';
+    let currentViewingTitle = '';
+
+    let allStudents = ['Чаленко Данилко', 'Чаленко Філіція', 'Чаленко Остап', 'іївіі'];
+
+    let groupsData = {
+      'Група 1.6': ['Чаленко Данилко'],
+      'Група 1.5': ['іївіі', 'Чаленко Філіція'],
+      'Група 1.4': ['Чаленко Остап']
+    };
+
+    let studentsDatabase = {
+      'Чаленко Данилко': { score: '90%', tasks: [{title: 'Everyday Life & Routines (Урок)', status: 'Завершено (95%)'}, {title: 'Hobbies & Entertainment (ДЗ)', status: 'Активне ДЗ'}] },
+      'Чаленко Філіція': { score: '88%', tasks: [{title: 'Travel & Exploring (Урок)', status: 'Завершено (88%)'}] },
+      'Чаленко Остап': { score: '85%', tasks: [{title: 'Basic Grammar (ДЗ)', status: 'Активне ДЗ'}] },
+      'іївіі': { score: '100%', tasks: [] }
+    };
+
+    let questionCount = 0;
+    let isRecording = false;
+    let mediaRecorder = null;
+    let audioChunks = [];
+
+    function openModal(id) { 
+      if(id === 'modal-gradebook') renderGradebookGroups();
+      document.getElementById(id).style.display = 'flex'; 
+    }
     function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-    function openStudentProfileModal(name, initials) {
-      document.getElementById('st-modal-name').innerText = name;
-      document.getElementById('st-modal-avatar').innerText = initials;
-      openModal('modal-student-profile');
+    function triggerProfilePhotoUpload() {
+      document.getElementById('profile-photo-input').click();
+    }
+    function uploadProfilePhoto(event) {
+      const file = event.target.files[0];
+      if(file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('header-avatar').style.backgroundImage = `url('${e.target.result}')`;
+          document.getElementById('header-avatar').innerText = '';
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    /* View/Edit Material Functions */
+    function viewMaterialDetails(title) {
+      currentViewingTitle = title;
+      document.getElementById('vm-title').innerHTML = `<i class="fa-solid fa-book-open"></i> ${title}`;
+      document.getElementById('vm-desc').innerText = `Матеріал та конспект по темі "${title}". Уроки та практичні завдання для закріплення.`;
+      openModal('modal-view-material');
+    }
+
+    function editCurrentMaterial() {
+      closeModal('modal-view-material');
+      document.getElementById('creator-modal-header').innerText = `Редагування: ${currentViewingTitle}`;
+      document.getElementById('creation-mode-select').value = 'new';
+      document.getElementById('new-item-title').value = currentViewingTitle;
+      toggleCreationMode();
+      openModal('modal-creator');
+    }
+
+    async function toggleVoiceRecord() {
+      const btn = document.getElementById('record-mic-btn');
+      const status = document.getElementById('record-status');
+      const player = document.getElementById('audio-preview');
+
+      if(!isRecording) {
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+            mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+            mediaRecorder.onstop = () => {
+              const blob = new Blob(audioChunks, { type: 'audio/mp3' });
+              player.src = URL.createObjectURL(blob);
+              player.style.display = 'block';
+            };
+            mediaRecorder.start();
+            isRecording = true;
+            btn.classList.add('recording');
+            status.style.display = 'block';
+          } catch(err) {
+            alert('Не вдалося отримати доступ до мікрофона: ' + err.message);
+          }
+        } else {
+          alert('Ваш браузер не підтримує запис аудіо.');
+        }
+      } else {
+        if(mediaRecorder) mediaRecorder.stop();
+        isRecording = false;
+        btn.classList.remove('recording');
+        status.style.display = 'none';
+      }
+    }
+
+    function planLessonForDate(dateStr) {
+      const topic = prompt(`Запланувати урок на ${dateStr}:`, 'Нова тема англійської мови');
+      if(topic) {
+        alert(`Урок "${topic}" успішно заплановано на ${dateStr}!`);
+      }
+    }
+
+    function openCreatorModal(targetName) {
+      currentAssignTarget = targetName;
+      document.getElementById('creator-modal-header').innerText = `Призначити для: ${targetName}`;
+      document.getElementById('creation-mode-select').value = 'recent';
+      selectedRecentTitle = '';
+      document.querySelectorAll('#recent-selectable-list .list-item').forEach(el => el.classList.remove('selected'));
+      toggleCreationMode();
+      openModal('modal-creator');
+    }
+
+    function toggleCreationMode() {
+      const mode = document.getElementById('creation-mode-select').value;
+      document.getElementById('recent-materials-box').style.display = (mode === 'recent') ? 'block' : 'none';
+      document.getElementById('new-material-form').style.display = (mode === 'new') ? 'block' : 'none';
+    }
+
+    function selectRecentItem(element, title) {
+      document.querySelectorAll('#recent-selectable-list .list-item').forEach(el => el.classList.remove('selected'));
+      element.classList.add('selected');
+      selectedRecentTitle = title;
+    }
+
+    function toggleTestConstructor() {
+      const type = document.getElementById('creator-type').value;
+      const sec = document.getElementById('test-section');
+      sec.style.display = (type === 'hw') ? 'block' : 'none';
+      if(type === 'hw' && questionCount === 0) {
+        addTestQuestion();
+      }
+    }
+
+    function addTestQuestion() {
+      questionCount++;
+      const qId = questionCount;
+      const container = document.getElementById('tests-container');
+      const div = document.createElement('div');
+      div.className = 'test-item';
+      div.style.cssText = 'background:#fff; padding:12px; border-radius:10px; border:2px solid #111827; margin-bottom:12px;';
+      div.id = `question-box-${qId}`;
+      
+      div.innerHTML = `
+        <div style="font-weight:700; margin-bottom:6px;">Запитання ${qId}:</div>
+        <input type="text" class="form-control" placeholder="Введіть текст запитання" style="margin-bottom:8px;">
+        <div style="font-size:0.8rem; font-weight:700; margin-bottom:4px;">Варіанти відповідей (позначте правильну):</div>
+        <div id="options-list-${qId}">
+          <div class="opt-row">
+            <input type="radio" name="correct-q-${qId}" checked>
+            <input type="text" class="form-control" placeholder="Варіант 1">
+          </div>
+          <div class="opt-row">
+            <input type="radio" name="correct-q-${qId}">
+            <input type="text" class="form-control" placeholder="Варіант 2">
+          </div>
+        </div>
+        <button class="btn btn-yellow" style="font-size:0.75rem; padding:4px 8px; margin-top:4px;" onclick="addOptionToQuestion(${qId})"><i class="fa-solid fa-plus"></i> Додати варіант</button>
+      `;
+      container.appendChild(div);
+    }
+
+    function addOptionToQuestion(qId) {
+      const optContainer = document.getElementById(`options-list-${qId}`);
+      const count = optContainer.children.length + 1;
+      const row = document.createElement('div');
+      row.className = 'opt-row';
+      row.innerHTML = `
+        <input type="radio" name="correct-q-${qId}">
+        <input type="text" class="form-control" placeholder="Варіант ${count}">
+      `;
+      optContainer.appendChild(row);
+    }
+
+    function confirmAssignOrPublish() {
+      const mode = document.getElementById('creation-mode-select').value;
+      let assignedTitle = '';
+
+      if(mode === 'recent') {
+        if(!selectedRecentTitle) {
+          alert('Будь ласка, виберіть матеріал зі списку!');
+          return;
+        }
+        assignedTitle = selectedRecentTitle;
+      } else {
+        assignedTitle = document.getElementById('new-item-title').value || 'Новий урок / ДЗ';
+      }
+
+      if(groupsData[currentAssignTarget]) {
+        groupsData[currentAssignTarget].forEach(sName => {
+          if(!studentsDatabase[sName]) studentsDatabase[sName] = { score: '90%', tasks: [] };
+          studentsDatabase[sName].tasks.push({ title: assignedTitle, status: 'Нове завдання' });
+        });
+        alert(`Успішно призначено "${assignedTitle}" для всієї групи ${currentAssignTarget}!`);
+      } else {
+        if(!studentsDatabase[currentAssignTarget]) studentsDatabase[currentAssignTarget] = { score: '90%', tasks: [] };
+        studentsDatabase[currentAssignTarget].tasks.push({ title: assignedTitle, status: 'Нове завдання' });
+        alert(`Успішно призначено "${assignedTitle}" для учня ${currentAssignTarget}!`);
+      }
+
+      closeModal('modal-creator');
+    }
+
+    function openStudentCabinet(studentName) {
+      closeModal('modal-group-detail');
+      closeModal('modal-gradebook');
+      currentAssignTarget = studentName;
+      
+      const data = studentsDatabase[studentName] || { score: '90%', tasks: [] };
+      
+      document.getElementById('sc-student-name').innerText = studentName;
+      document.getElementById('sc-avatar').innerText = studentName.split(' ').map(n => n[0]).join('').substring(0, 2);
+      document.getElementById('sc-student-score').innerText = data.score;
+      
+      let studentGroup = 'Без групи (Індивідуально)';
+      for(let g in groupsData) {
+        if(groupsData[g].includes(studentName)) studentGroup = g;
+      }
+      document.getElementById('sc-student-group').innerText = studentGroup;
+
+      document.getElementById('sc-add-btn').onclick = function() {
+        openCreatorModal(studentName);
+      };
+
+      const tasksContainer = document.getElementById('sc-student-tasks-list');
+      if(data.tasks.length === 0) {
+        tasksContainer.innerHTML = '<p style="font-size:0.85rem; color:#6b7280;">У цього учня поки немає призначених завдань.</p>';
+      } else {
+        tasksContainer.innerHTML = data.tasks.map(t => `
+          <div class="list-item" onclick="viewMaterialDetails('${t.title.replace(/'/g, "\\'")}')">
+            <span>${t.title}</span>
+            <span style="font-size:0.75rem; background:var(--accent-yellow); padding:2px 8px; border-radius:8px; border:1.5px solid #000;">${t.status}</span>
+          </div>
+        `).join('');
+      }
+
+      openModal('modal-student-cabinet');
+    }
+
+    function renderMainLists() {
+      const groupsContainer = document.getElementById('main-groups-container');
+      groupsContainer.innerHTML = Object.keys(groupsData).map(gName => `
+        <div class="list-item" onclick="openGroupModal('${gName}')">
+          <span>${gName} (${groupsData[gName].length} учнів)</span> <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      `).join('');
+
+      const indivContainer = document.getElementById('main-indiv-container');
+      indivContainer.innerHTML = allStudents.map(s => `
+        <div class="list-item" onclick="openStudentCabinet('${s}')">
+          <span>${s}</span> <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      `).join('');
     }
 
     function openGroupModal(groupName) {
-      document.getElementById('group-title-heading').innerText = groupName;
+      currentAssignTarget = groupName;
+      document.getElementById('group-modal-title').innerText = groupName;
+      document.getElementById('group-add-btn').onclick = function() {
+        openCreatorModal(groupName);
+      };
+
+      const listContainer = document.getElementById('group-students-list-view');
+      const students = groupsData[groupName] || [];
+      
+      if(students.length === 0) {
+        listContainer.innerHTML = '<p style="font-size:0.85rem; color:#6b7280;">У цій групі ще немає учнів. Перетягніть їх через Загальний журнал.</p>';
+      } else {
+        listContainer.innerHTML = students.map(s => `
+          <div class="list-item" onclick="openStudentCabinet('${s}')">
+            <span>${s}</span> <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        `).join('');
+      }
       openModal('modal-group-detail');
     }
 
-    function openLessonDetailsModal(title) {
-      document.getElementById('ld-title').innerText = title;
-      openModal('modal-lesson-details');
+    function createNewGroupPrompt() {
+      const gName = prompt('Введіть назву нової групи (наприклад: Група 1.7):');
+      if(gName && !groupsData[gName]) {
+        groupsData[gName] = [];
+        renderMainLists();
+        renderGradebookGroups();
+      }
+    }
+
+    function deleteGroup(gName) {
+      if(confirm(`Ви дійсно хочете видалити ${gName}?`)) {
+        delete groupsData[gName];
+        renderMainLists();
+        renderGradebookGroups();
+      }
+    }
+
+    function addNewStudentPrompt() {
+      const sName = prompt('Введіть ПІБ нового учня:');
+      if(sName && !allStudents.includes(sName)) {
+        allStudents.push(sName);
+        studentsDatabase[sName] = { score: '100%', tasks: [] };
+        renderMainLists();
+        renderGradebookGroups();
+      }
+    }
+
+    function deleteStudent(sName) {
+      if(confirm(`Ви дійсно хочете видалити учня ${sName}?`)) {
+        allStudents = allStudents.filter(s => s !== sName);
+        delete studentsDatabase[sName];
+        for(let g in groupsData) {
+          groupsData[g] = groupsData[g].filter(s => s !== sName);
+        }
+        renderMainLists();
+        renderGradebookGroups();
+      }
+    }
+
+    function renderGradebookGroups() {
+      const masterContainer = document.getElementById('master-students-list');
+      masterContainer.innerHTML = allStudents.map(s => `
+        <div class="draggable-student" draggable="true" ondragstart="drag(event)" id="stud-${s}">
+          <span onclick="openStudentCabinet('${s}')">${s}</span>
+          <span class="btn-del" onclick="deleteStudent('${s}')" title="Видалити учня">✕</span>
+        </div>
+      `).join('');
+
+      const container = document.getElementById('gradebook-groups-container');
+      container.innerHTML = Object.keys(groupsData).map(gName => `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+          <span style="font-size:0.8rem; font-weight:700;">${gName}:</span>
+          <i class="fa-solid fa-trash btn-del" onclick="deleteGroup('${gName}')" title="Видалити групу"></i>
+        </div>
+        <div class="dropzone-group" id="drop-${gName}" ondragover="allowDrop(event)" ondrop="dropToGroup(event, '${gName}')">
+          ${groupsData[gName].length === 0 ? '<span style="font-size:0.75rem; color:#6b7280;">(порожньо)</span>' : 
+            groupsData[gName].map(sName => `
+              <div class="draggable-student" draggable="true" ondragstart="drag(event)" id="stud-${sName}">
+                <span onclick="openStudentCabinet('${sName}')">${sName}</span>
+                <span class="btn-del" onclick="deleteStudent('${sName}')">✕</span>
+              </div>
+            `).join('')}
+        </div>
+      `).join('');
     }
 
     function saveNewLink() {
       const title = document.getElementById('nl-title').value;
       const url = document.getElementById('nl-url').value;
       const icon = document.getElementById('nl-icon').value;
+      if(!title) return;
 
-      if(!title) { alert('Введіть назву посилання!'); return; }
-
-      const container = document.getElementById('useful-links-grid-container');
+      const container = document.getElementById('useful-links-grid');
       const card = document.createElement('a');
       card.className = 'link-card-user';
       card.href = url || '#';
       card.target = '_blank';
-      card.innerHTML = `<i class="fa-solid ${icon}" style="font-size:1.6rem; color:#111827;"></i><span>${title}</span>`;
-      
-      container.appendChild(card);
+      card.innerHTML = `<i class="fa-solid ${icon}" style="font-size:1.5rem; color:#111827;"></i><span>${title}</span>`;
+      container.insertBefore(card, container.lastElementChild);
       closeModal('modal-add-link');
       document.getElementById('nl-title').value = '';
-      document.getElementById('nl-url').value = '';
     }
+
+    function allowDrop(ev) { ev.preventDefault(); }
+    function drag(ev) { 
+      const text = ev.target.innerText.replace('✕', '').trim();
+      ev.dataTransfer.setData("text", text); 
+    }
+
+    function dropToGroup(ev, groupName) {
+      ev.preventDefault();
+      const studentName = ev.dataTransfer.getData("text");
+      if(!studentName) return;
+
+      for(let g in groupsData) {
+        groupsData[g] = groupsData[g].filter(s => s !== studentName);
+      }
+      if(!groupsData[groupName].includes(studentName)) {
+        groupsData[groupName].push(studentName);
+      }
+
+      renderGradebookGroups();
+      renderMainLists();
+    }
+
+    function dropToMaster(ev) {
+      ev.preventDefault();
+      const studentName = ev.dataTransfer.getData("text");
+      if(!studentName) return;
+
+      for(let g in groupsData) {
+        groupsData[g] = groupsData[g].filter(s => s !== studentName);
+      }
+
+      renderGradebookGroups();
+      renderMainLists();
+    }
+
+    function toggleUserRole() {
+      currentRole = currentRole === 'teacher' ? 'student' : 'teacher';
+      document.getElementById('teacher-view').style.display = currentRole === 'teacher' ? 'block' : 'none';
+      document.getElementById('student-view').style.display = currentRole === 'student' ? 'block' : 'none';
+      document.getElementById('header-name').innerText = currentRole === 'teacher' ? 'Олена Вікторівна' : 'Чаленко Данилко';
+      document.getElementById('header-role').innerText = currentRole === 'teacher' ? 'Куратор / Вчитель' : 'Учень (Група 1.6)';
+    }
+
+    renderMainLists();
   </script>
 </body>
 </html>
