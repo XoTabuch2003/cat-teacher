@@ -1,456 +1,837 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Школа англійської мови Cat teacher</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --bg-main: #f7f9fa;
-      --card-bg: #ffffff;
-      --border-color: #111827;
-      --border-width: 2.5px;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --radius-sm: 10px;
-      --accent-yellow: #fef08a;
-      --accent-green: #bbf7d0;
-      --accent-blue: #e0f2fe;
-      --accent-purple: #f3e8ff;
-      --accent-red: #fecdd3;
-      --shadow-neo: 4px 4px 0px #111827;
-      --shadow-neo-sm: 2px 2px 0px #111827;
-      --shadow-neo-lg: 6px 6px 0px #111827;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школа Англійської мови Cat teacher</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Montserrat & Inter & Comfortaa -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcfcfd;
+            color: #111827;
+        }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Comfortaa', 'Montserrat', sans-serif; }
-    body { background-color: var(--bg-main); color: var(--border-color); padding-bottom: 50px; min-height: 100vh; }
+        .brand-font {
+            font-family: 'Comfortaa', cursive, sans-serif;
+        }
 
-    /* Splash Screen */
-    #splash-screen {
-      position: fixed; inset: 0; background: #ffffff; z-index: 9999;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 0.5s ease, visibility 0.5s;
-    }
-    .arc-text-container { position: relative; width: 340px; height: 120px; text-align: center; }
-    .arc-text { position: absolute; width: 100%; top: 0; font-weight: 700; font-size: 1.25rem; fill: var(--border-color); }
-    .bongo-cat-img { width: 150px; margin-top: 10px; animation: bounce 1.2s infinite ease-in-out; }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .arc-text {
+            font-family: 'Comfortaa', cursive, sans-serif;
+            font-weight: 700;
+            fill: #111827;
+        }
 
-    /* Layout & Header */
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 15px; flex-wrap: wrap; }
+        .card-sketch {
+            border: 2px solid #111827;
+            border-radius: 1.25rem;
+            box-shadow: 4px 4px 0px #111827;
+            background: #ffffff;
+            transition: all 0.2s ease;
+        }
 
-    .brand-pill {
-      background: var(--card-bg); border: var(--border-width) solid var(--border-color);
-      border-radius: 50px; padding: 10px 24px; display: flex; align-items: center; gap: 12px;
-      box-shadow: var(--shadow-neo-sm); font-weight: 700; font-size: 1.1rem;
-    }
-    .brand-pill img { height: 28px; width: auto; }
+        .card-sketch:hover {
+            box-shadow: 6px 6px 0px #111827;
+        }
 
-    .user-profile-badge {
-      display: flex; align-items: center; gap: 12px; background: var(--card-bg);
-      border: var(--border-width) solid var(--border-color); border-radius: 50px;
-      padding: 6px 16px 6px 6px; box-shadow: var(--shadow-neo-sm);
-    }
-    .avatar-circle {
-      width: 38px; height: 38px; border-radius: 50%; background: var(--border-color);
-      color: #fff; display: flex; align-items: center; justify-content: center;
-      font-weight: 700; overflow: hidden; border: 1.5px solid var(--border-color);
-    }
-    .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
-    .user-info { display: flex; flex-direction: column; }
-    .user-name { font-weight: 700; font-size: 0.95rem; }
-    .user-role { font-size: 0.75rem; color: #6b7280; }
+        .pill-sketch {
+            border: 2px solid #111827;
+            border-radius: 9999px;
+            box-shadow: 2px 2px 0px #111827;
+            background: #ffffff;
+        }
 
-    .top-action-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 15px; }
-    .welcome-pill {
-      background: var(--accent-yellow); border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-lg); padding: 12px 28px; font-weight: 700; font-size: 1.2rem;
-      box-shadow: var(--shadow-neo);
-    }
+        .btn-sketch {
+            border: 2px solid #111827;
+            border-radius: 0.75rem;
+            box-shadow: 3px 3px 0px #111827;
+            font-weight: 600;
+            transition: all 0.15s ease;
+            background-color: #ffffff;
+        }
 
-    /* Controls & Buttons */
-    .btn {
-      background: var(--card-bg); border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-md); padding: 10px 20px; font-weight: 700; cursor: pointer;
-      box-shadow: var(--shadow-neo-sm); transition: all 0.15s ease; display: inline-flex;
-      align-items: center; gap: 8px; font-size: 0.9rem;
-    }
-    .btn:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-neo); }
-    .btn:active { transform: translate(0, 0); box-shadow: 0px 0px 0px #111827; }
-    .btn-yellow { background: var(--accent-yellow); }
-    .btn-green { background: var(--accent-green); }
-    .btn-blue { background: var(--accent-blue); }
-    .btn-purple { background: var(--accent-purple); }
+        .btn-sketch:hover {
+            transform: translateY(-1px);
+            box-shadow: 4px 4px 0px #111827;
+        }
 
-    /* Dashboard Main Grid */
-    .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; }
-    @media (max-width: 900px) { .dashboard-grid { grid-template-columns: 1fr; } }
+        .btn-sketch:active {
+            transform: translateY(2px);
+            box-shadow: 1px 1px 0px #111827;
+        }
 
-    .neo-card {
-      background: var(--card-bg); border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-neo);
-      display: flex; flex-direction: column; position: relative;
-    }
-    .card-title-pill {
-      background: var(--card-bg); border: var(--border-width) solid var(--border-color);
-      border-radius: 50px; padding: 10px 20px; text-align: center; font-weight: 700;
-      margin-bottom: 18px; box-shadow: var(--shadow-neo-sm); text-transform: lowercase; font-size: 1.05rem;
-    }
+        .card-interactive {
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .card-interactive:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0px #111827;
+        }
 
-    .item-list { display: flex; flex-direction: column; gap: 12px; }
-    .list-item {
-      border: var(--border-width) solid var(--border-color); border-radius: var(--radius-md);
-      padding: 12px 16px; background: #fff; cursor: pointer; display: flex; justify-content: space-between;
-      align-items: center; transition: background 0.2s; font-size: 0.88rem; font-weight: 600;
-    }
-    .list-item:hover { background: var(--accent-blue); }
+        @keyframes bongoPawLeft {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-10deg); }
+        }
+        @keyframes bongoPawRight {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(10deg); }
+        }
 
-    /* Useful Links Grid */
-    .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .link-box {
-      border: var(--border-width) solid var(--border-color); border-radius: var(--radius-md);
-      padding: 15px; text-align: center; text-decoration: none; color: inherit; font-weight: 700;
-      display: flex; flex-direction: column; align-items: center; gap: 8px; box-shadow: var(--shadow-neo-sm);
-      transition: transform 0.15s; position: relative; background: #fff;
-    }
-    .link-box:hover { transform: translateY(-2px); }
-    .link-icon { font-size: 1.8rem; }
-    .zoom-icon { color: #2d8cff; }
-    .pdf-icon { color: #e11d48; }
-    .books-icon { color: #16a34a; }
-    .game-icon { color: #9333ea; }
+        .paw-left {
+            animation: bongoPawLeft 0.5s infinite ease-in-out;
+            transform-origin: bottom right;
+        }
 
-    /* Homework Queue */
-    .hw-queue-card { margin-top: 10px; }
-    .hw-item {
-      border: var(--border-width) solid var(--border-color); border-radius: var(--radius-md);
-      padding: 15px; display: flex; justify-content: space-between; align-items: center;
-      gap: 15px; flex-wrap: wrap; margin-top: 10px; background: #fff;
-    }
-    .grade-input {
-      width: 55px; padding: 8px; border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-sm); text-align: center; font-weight: 700;
-    }
+        .paw-right {
+            animation: bongoPawRight 0.5s infinite ease-in-out 0.25s;
+            transform-origin: bottom left;
+        }
 
-    /* Modal Windows */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(3px);
-      z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px;
-    }
-    .modal-box {
-      background: #fff; border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-lg); padding: 25px; width: 100%; max-width: 650px;
-      box-shadow: var(--shadow-neo-lg); max-height: 90vh; overflow-y: auto; position: relative;
-    }
-    .close-btn { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.3rem; cursor: pointer; }
+        .modal-overlay {
+            background-color: rgba(17, 24, 39, 0.4);
+            backdrop-filter: blur(4px);
+        }
 
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.88rem; }
-    .form-control {
-      width: 100%; padding: 10px 14px; border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-sm); font-size: 0.9rem;
-    }
-
-    /* Notion Calendar */
-    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-top: 15px; }
-    .cal-day-header { text-align: center; font-weight: 700; font-size: 0.75rem; padding: 4px; }
-    .cal-cell {
-      border: 1.5px solid var(--border-color); border-radius: 8px; min-height: 65px;
-      padding: 4px; background: #fff; cursor: pointer; font-size: 0.75rem; display: flex;
-      flex-direction: column; gap: 2px;
-    }
-    .cal-cell:hover { background: #f1f5f9; }
-    .cal-date-num { font-weight: 700; opacity: 0.6; }
-    .cal-event-tag {
-      background: var(--accent-yellow); border: 1px solid var(--border-color);
-      border-radius: 4px; padding: 2px 4px; font-size: 0.68rem; font-weight: 700;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-
-    /* Audio Recording UI */
-    .audio-rec-box {
-      border: var(--border-width) dashed var(--border-color); border-radius: var(--radius-md);
-      padding: 20px; text-align: center; background: var(--bg-main); margin-top: 10px;
-    }
-    .rec-dot { width: 12px; height: 12px; background: red; border-radius: 50%; display: inline-block; margin-right: 6px; animation: pulse 1s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-    .lesson-material-box {
-      background: #f8fafc; border: var(--border-width) solid var(--border-color);
-      border-radius: var(--radius-md); padding: 15px; margin-top: 12px;
-    }
-  </style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-  <!-- Splash Screen -->
-  <div id="splash-screen">
-    <div class="arc-text-container">
-      <svg viewBox="0 0 500 150" style="width:100%; height:100%;">
-        <path id="curve" fill="transparent" d="M 50,120 A 200,120 0 0,1 450,120" />
-        <text class="arc-text"><textPath href="#curve" startOffset="50%" text-anchor="middle">Школа англійської мови Cat teacher</textPath></text>
-      </svg>
-    </div>
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWJ2Zzl6bWptM3Z3Ymlwd3V4bWFzazZ1eWgzaWhnd2tvdzV3czJmYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/du3J3AXZMG4Uk/giphy.gif" alt="Cat Logo" class="bongo-cat-img">
-  </div>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center p-4 transition-opacity duration-500">
+        <div class="relative flex flex-col items-center max-w-md w-full">
+            <svg viewBox="0 0 500 150" class="w-full h-36">
+                <path id="curve" fill="transparent" d="M 50,130 A 200,100 0 0,1 450,130" />
+                <text font-size="22" class="arc-text" text-anchor="middle">
+                    <textPath href="#curve" startOffset="50%">
+                        Школа Англійської мови Cat teacher
+                    </textPath>
+                </text>
+            </svg>
 
-  <div class="container">
-    <header>
-      <div class="brand-pill">
-        <i class="fa-solid fa-cat"></i>
-        <span>Школа англійської мови Cat teacher</span>
-      </div>
+            <div class="w-48 h-36 relative -mt-6">
+                <svg viewBox="0 0 200 140" class="w-full h-full">
+                    <path d="M 30,120 C 30,60 60,40 100,40 C 140,40 170,60 170,120 Z" fill="#ffffff" stroke="#111827" stroke-width="4" />
+                    <polygon points="50,55 35,25 70,45" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round"/>
+                    <polygon points="150,55 165,25 130,45" fill="#ffffff" stroke="#111827" stroke-width="4" stroke-linejoin="round"/>
+                    <polygon points="52,50 42,32 65,45" fill="#f472b6" />
+                    <polygon points="148,50 158,32 135,45" fill="#f472b6" />
+                    <circle cx="75" cy="70" r="5" fill="#111827" />
+                    <circle cx="125" cy="70" r="5" fill="#111827" />
+                    <path d="M 90,80 Q 95,87 100,80 Q 105,87 110,80" fill="transparent" stroke="#111827" stroke-width="3" stroke-linecap="round" />
+                    <ellipse class="paw-left" cx="55" cy="105" rx="14" ry="10" fill="#ffffff" stroke="#111827" stroke-width="3" />
+                    <ellipse class="paw-right" cx="145" cy="105" rx="14" ry="10" fill="#ffffff" stroke="#111827" stroke-width="3" />
+                    <line x1="10" y1="120" x2="190" y2="120" stroke="#111827" stroke-width="4" stroke-linecap="round" />
+                </svg>
+            </div>
 
-      <div style="display: flex; gap: 10px; align-items: center;">
-        <div class="user-profile-badge">
-          <div class="avatar-circle" id="current-user-avatar">
-            <span id="avatar-initials">МО</span>
-          </div>
-          <div class="user-info">
-            <span class="user-name" id="current-user-name">Марія Олександрівна</span>
-            <span class="user-role" id="current-user-role">Вчитель</span>
-          </div>
+            <button onclick="hideSplash()" class="mt-8 btn-sketch px-8 py-3 text-lg bg-yellow-300 hover:bg-yellow-400">
+                Зайти в школу <i class="fa-solid fa-arrow-right ml-2"></i>
+            </button>
         </div>
-        <button class="btn" onclick="switchRoleToggle()" id="switch-role-btn"><i class="fa-solid fa-arrows-rotate"></i> Учень</button>
-      </div>
+    </div>
+
+    <!-- Header Navigation Bar -->
+    <header class="bg-white border-b-2 border-gray-900 sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchRoleToggle()">
+                <div class="w-12 h-10 relative">
+                    <svg viewBox="0 0 200 140" class="w-full h-full">
+                        <path d="M 30,120 C 30,60 60,40 100,40 C 140,40 170,60 170,120 Z" fill="#ffffff" stroke="#111827" stroke-width="6" />
+                        <polygon points="50,55 35,25 70,45" fill="#ffffff" stroke="#111827" stroke-width="6" />
+                        <polygon points="150,55 165,25 130,45" fill="#ffffff" stroke="#111827" stroke-width="6" />
+                        <circle cx="75" cy="70" r="7" fill="#111827" />
+                        <circle cx="125" cy="70" r="7" fill="#111827" />
+                        <path d="M 90,82 Q 100,92 110,82" fill="transparent" stroke="#111827" stroke-width="5" />
+                    </svg>
+                </div>
+                <div class="pill-sketch px-4 py-1.5 hidden sm:block">
+                    <span class="brand-font font-bold text-sm sm:text-base">Школа Англійської мови Cat teacher</span>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-2 border-2 border-gray-900 rounded-full p-1 pr-3 bg-white">
+                    <div class="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold text-xs" id="user-avatar-text">МО</div>
+                    <div class="text-xs">
+                        <div class="font-bold leading-tight" id="user-name-text">Марія Олександрівна</div>
+                        <div class="text-gray-500 text-[10px]" id="user-role-text">Вчитель</div>
+                    </div>
+                </div>
+                <button class="btn-sketch px-3 py-1.5 text-xs bg-yellow-300" onclick="switchRoleToggle()"><i class="fa-solid fa-arrows-rotate mr-1"></i> Змінити роль</button>
+            </div>
+        </div>
     </header>
 
-    <div class="top-action-bar">
-      <div class="welcome-pill" id="welcome-msg">Вітаємо, Марія Олександрівна</div>
-      <div style="display: flex; gap: 10px;">
-        <button class="btn btn-yellow" onclick="openCalendarModal()"><i class="fa-solid fa-calendar-days"></i> Календар / Додати урок</button>
-        <button class="btn btn-purple" id="curator-add-teacher-btn" onclick="openAddTeacherModal()"><i class="fa-solid fa-user-plus"></i> Додати вчителя</button>
-      </div>
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- STUDENT DASHBOARD -->
+        <div id="view-student-dashboard" class="hidden space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                <div class="md:col-span-8 flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <div class="pill-sketch px-8 py-3 text-center w-full sm:w-auto">
+                        <span class="text-2xl font-bold brand-font">Група 1.6</span>
+                    </div>
+                    <div class="pill-sketch px-6 py-2.5 text-center bg-gray-50 w-full sm:w-auto">
+                        <span class="text-lg font-semibold">Чаленко Данилко</span>
+                    </div>
+                </div>
+
+                <div class="md:col-span-4 flex items-center justify-end space-x-3">
+                    <div class="pill-sketch px-4 py-2 flex items-center space-x-2 bg-green-50 border-green-800">
+                        <span class="text-2xl font-bold text-green-700" id="student-avg-score-display">87 %</span>
+                        <span class="text-xs text-gray-600 font-medium leading-tight">середня<br>оцінка</span>
+                    </div>
+
+                    <button onclick="openCalendarModal()" class="btn-sketch px-4 py-2.5 flex items-center space-x-2 bg-blue-50 hover:bg-blue-100">
+                        <span class="text-sm font-bold">календар занять</span>
+                        <i class="fa-regular fa-calendar-days text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Column 1: Пройдений матеріал -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-gray-50">
+                        Пройдений матеріал
+                    </div>
+                    <div id="student-past-lessons" class="space-y-3 overflow-y-auto max-h-96 pr-1 flex-1"></div>
+                </div>
+
+                <!-- Column 2: завдане д\з -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-yellow-50">
+                        завдане д\з
+                    </div>
+                    <div id="student-current-hw" class="space-y-3 overflow-y-auto max-h-96 pr-1 flex-1"></div>
+                </div>
+
+                <!-- Column 3: наступні уроки -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-blue-50">
+                        наступні уроки
+                    </div>
+                    <div id="student-upcoming-lessons" class="space-y-3 overflow-y-auto max-h-96 pr-1 flex-1"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEACHER DASHBOARD -->
+        <div id="view-teacher-dashboard" class="space-y-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="pill-sketch px-6 py-2 bg-yellow-100">
+                    <h2 class="text-xl font-bold brand-font">Вітаємо, Марія Олександрівна</h2>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="openCalendarModal()" class="btn-sketch px-4 py-2 bg-blue-50 text-sm">
+                        <i class="fa-regular fa-calendar-plus mr-1"></i> Додати урок / тему
+                    </button>
+                    <button onclick="openAddTeacherModal()" class="btn-sketch px-4 py-2 bg-purple-100 text-sm">
+                        <i class="fa-solid fa-user-plus mr-1"></i> Додати вчителя
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3 Columns: Групи | Індивідуальні | Корисні посилання -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Panel 1: Групи -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-gray-50">групи</div>
+                    <div id="teacher-groups-list" class="space-y-3"></div>
+                </div>
+
+                <!-- Panel 2: Індивідуальні -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-gray-50">індивідуальні</div>
+                    <div id="teacher-indiv-list" class="space-y-3"></div>
+                </div>
+
+                <!-- Panel 3: Корисні посилання (з плюсиком) -->
+                <div class="card-sketch p-5 flex flex-col h-full">
+                    <div class="pill-sketch px-4 py-2 text-center font-bold text-lg mb-4 bg-gray-50">корисні посилання</div>
+                    <div id="useful-links-grid" class="grid grid-cols-2 gap-4 flex-1">
+                        <!-- Square Plus Button -->
+                        <div onclick="openAddLinkModal()" class="card-sketch p-4 flex flex-col items-center justify-center cursor-pointer hover:bg-yellow-50 text-center min-h-[100px] border-dashed border-2">
+                            <i class="fa-solid fa-plus text-3xl text-gray-800"></i>
+                            <span class="text-xs font-bold mt-2">Додати</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Submissions -->
+            <div class="card-sketch p-6">
+                <h3 class="text-xl font-bold brand-font mb-4 flex items-center">
+                    <i class="fa-solid fa-clipboard-check text-yellow-500 mr-2"></i> Домашні завдання на перевірку
+                </h3>
+                <div id="teacher-submissions-list" class="space-y-4"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL 1: LESSON MATERIAL VIEW (ПЕРЕГЛЯД МАТЕРІАЛУ УРОКУ) -->
+    <div id="modal-lesson-view" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-2xl bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <div class="pill-sketch px-4 py-1 bg-yellow-200 font-bold text-sm" id="lv-title">Назва уроку</div>
+                <button onclick="closeModal('modal-lesson-view')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
+
+            <p class="text-xs text-gray-500 mb-4 font-bold" id="lv-date">Дата: 2026-11-08</p>
+
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-50 rounded-xl border-2 border-gray-900">
+                    <h4 class="font-bold text-sm mb-2 text-gray-800"><i class="fa-solid fa-book-open text-blue-500 mr-1"></i> Конспект та Лекція:</h4>
+                    <p class="text-sm leading-relaxed whitespace-pre-line" id="lv-summary"></p>
+                </div>
+
+                <div class="p-4 bg-blue-50 rounded-xl border-2 border-gray-900">
+                    <h4 class="font-bold text-sm mb-2 text-gray-800"><i class="fa-solid fa-link text-purple-500 mr-1"></i> Прикріплені посилання / Медіа:</h4>
+                    <div id="lv-links" class="text-sm"></div>
+                </div>
+
+                <div class="p-4 bg-yellow-50 rounded-xl border-2 border-gray-900">
+                    <h4 class="font-bold text-sm mb-2 text-gray-800"><i class="fa-solid fa-pen-ruler text-yellow-600 mr-1"></i> Завдання (ДЗ):</h4>
+                    <p class="text-sm font-semibold" id="lv-hw-desc"></p>
+                </div>
+
+                <div id="lv-student-action" class="hidden pt-2">
+                    <button onclick="openSubmitHWModal()" class="w-full btn-sketch py-3 bg-green-300 hover:bg-green-400 font-bold text-sm">
+                        <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Здати виконане ДЗ
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- MAIN DASHBOARD PANELS -->
-    <div class="dashboard-grid" id="main-dashboard-panels">
-      
-      <!-- Panel 1: Groups (Teacher View) or Done Material (Student View) -->
-      <div class="neo-card" id="card-panel-1">
-        <div class="card-title-pill" id="title-panel-1">групи</div>
-        <div class="item-list" id="list-panel-1">
-          <!-- Dynamic Content -->
-        </div>
-      </div>
+    <!-- MODAL 2: GROUP DETAILS & ASSIGNMENT -->
+    <div id="modal-group-detail" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-xl bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <h3 class="text-xl font-bold brand-font" id="group-modal-title">Група 1.6</h3>
+                <button onclick="closeModal('modal-group-detail')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
 
-      <!-- Panel 2: Individual Students (Teacher View) or Current HW (Student View) -->
-      <div class="neo-card" id="card-panel-2">
-        <div class="card-title-pill" id="title-panel-2">індивідуальні</div>
-        <div class="item-list" id="list-panel-2">
-          <!-- Dynamic Content -->
-        </div>
-      </div>
+            <div class="mb-4 flex justify-between items-center bg-yellow-50 p-3 rounded-xl border-2 border-gray-900">
+                <span class="text-sm font-bold">Спільне завдання для усієї групи:</span>
+                <button onclick="openCreateLessonForTarget('Group 1.6')" class="btn-sketch px-3 py-1.5 text-xs bg-yellow-300 hover:bg-yellow-400">
+                    <i class="fa-solid fa-plus mr-1"></i> Видати ДЗ групі
+                </button>
+            </div>
 
-      <!-- Panel 3: Useful Links (Teacher) or Next Lessons + Average Grade (Student View) -->
-      <div class="neo-card" id="card-panel-3">
-        <div class="card-title-pill" id="title-panel-3" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 15px;">
-          <span>корисні посилання</span>
-          <button class="btn btn-yellow" onclick="openAddLinkModal()" style="padding: 2px 8px; border-radius: 50%; font-size: 0.8rem;">+</button>
+            <h4 class="font-bold text-sm mb-2 text-gray-700 uppercase">Склад групи:</h4>
+            <div id="group-students-list" class="space-y-3"></div>
         </div>
-        <div id="content-panel-3">
-          <!-- Links Grid or Student Score -->
-        </div>
-      </div>
-
     </div>
 
-    <!-- Homework Checking Section (Visible to Teacher) -->
-    <div class="neo-card hw-queue-card" id="hw-checking-section">
-      <div style="font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-clipboard-check" style="color: #eab308;"></i> Домашки на перевірку
-      </div>
-      <div id="hw-pending-list">
-        <!-- Render Pending Submissions -->
-      </div>
-    </div>
+    <!-- MODAL 3: STUDENT PROFILE & LESSONS (Teacher View) -->
+    <div id="modal-student-detail" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-2xl bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold" id="modal-student-avatar">ЧД</div>
+                    <div>
+                        <h3 class="text-xl font-bold brand-font" id="modal-student-name">Учень</h3>
+                        <span id="modal-student-tag" class="text-xs px-2 py-0.5 rounded-full border border-gray-900 bg-yellow-200">Група 1.6</span>
+                    </div>
+                </div>
+                <button onclick="closeModal('modal-student-detail')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
 
-  </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                <div class="p-3 bg-green-50 border-2 border-gray-900 rounded-xl text-center">
+                    <span class="text-xs font-bold text-gray-600 block">Середня оцінка</span>
+                    <span class="text-2xl font-bold text-green-700" id="modal-student-avg">87%</span>
+                </div>
+                <div class="p-3 bg-blue-50 border-2 border-gray-900 rounded-xl flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-gray-600 block">Особисте ДЗ</span>
+                        <span class="text-xs text-gray-500">Призначити урок учню</span>
+                    </div>
+                    <button onclick="openCreateLessonForTarget(activeSelectedStudentName)" class="btn-sketch px-3 py-1.5 text-xs bg-blue-300">
+                        <i class="fa-solid fa-pen-to-square mr-1"></i> Задати
+                    </button>
+                </div>
+            </div>
 
-  <!-- MODALS -->
-
-  <!-- 1. Lesson View Modal (ПРЕГЛЯД МАТЕРІАЛУ УРОКУ) -->
-  <div class="modal-overlay" id="modal-lesson-view">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-lesson-view')">✕</button>
-      <div class="card-title-pill" id="lview-title" style="text-align: left; background: var(--accent-yellow);">Тема уроку</div>
-      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 15px;" id="lview-date">Дата: 2026-11-01</p>
-      
-      <div class="lesson-material-box">
-        <h4 style="margin-bottom: 8px;"><i class="fa-solid fa-book-open"></i> Конспект та матеріал:</h4>
-        <div id="lview-summary" style="font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap;"></div>
-      </div>
-
-      <div class="lesson-material-box">
-        <h4 style="margin-bottom: 8px;"><i class="fa-solid fa-link"></i> Прикріплені посилання та медіа:</h4>
-        <div id="lview-links" style="font-size: 0.9rem;"></div>
-      </div>
-
-      <div class="lesson-material-box" style="background: #fff border: var(--border-width) solid var(--border-color);">
-        <h4 style="margin-bottom: 8px;"><i class="fa-solid fa-pen-ruler"></i> Домашнє завдання:</h4>
-        <p id="lview-hw-desc" style="font-size: 0.9rem; font-weight: 600;"></p>
-        <p style="font-size: 0.8rem; color: #e11d48; margin-top: 5px;" id="lview-deadline"></p>
-      </div>
-
-      <div id="lview-student-action-area" style="margin-top: 20px; display: none;">
-        <button class="btn btn-green" style="width: 100%; justify-content: center;" onclick="openSubmitHWModal()"><i class="fa-solid fa-upload"></i> Здати виконане ДЗ</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. Student Details Modal (Viewed by Teacher) -->
-  <div class="modal-overlay" id="modal-student-detail">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-student-detail')">✕</button>
-      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-        <div class="avatar-circle" style="width: 50px; height: 50px; font-size: 1.2rem;" id="stdetail-avatar">ЧФ</div>
-        <div>
-          <h3 id="stdetail-name">Чаленко Філіція</h3>
-          <span style="background: var(--accent-yellow); padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; border: 1px solid #000;" id="stdetail-type">Індивідуально</span>
+            <h4 class="font-bold text-sm mb-2 text-gray-700 uppercase">Уроки та статус виконання:</h4>
+            <div id="modal-student-lessons-list" class="space-y-3 max-h-64 overflow-y-auto"></div>
         </div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-        <div style="border: 2px solid #000; padding: 15px; border-radius: 16px; background: var(--accent-green); text-align: center;">
-          <div style="font-size: 0.8rem; font-weight: 700;">Середня оцінка</div>
-          <div style="font-size: 1.8rem; font-weight: 700;" id="stdetail-score">87%</div>
-        </div>
-        <div style="border: 2px solid #000; padding: 15px; border-radius: 16px; background: var(--accent-blue); display: flex; flex-direction: column; justify-content: center; align-items: center;">
-          <button class="btn btn-yellow" onclick="openCreateLessonForStudent()"><i class="fa-solid fa-plus"></i> Особисте ДЗ</button>
-        </div>
-      </div>
-
-      <h4 style="margin-bottom: 10px;">Уроки та статус виконання (натисніть для деталей):</h4>
-      <div class="item-list" id="stdetail-lessons-list">
-        <!-- Rendered list of lessons -->
-      </div>
     </div>
-  </div>
 
-  <!-- 3. Homework Inspection Modal (Teacher checks Audio/Text/Files) -->
-  <div class="modal-overlay" id="modal-check-hw">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-check-hw')">✕</button>
-      <h3><i class="fa-solid fa-magnifying-glass"></i> Перевірка ДЗ: <span id="chw-student-name"></span></h3>
-      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 15px;" id="chw-lesson-title"></p>
+    <!-- MODAL 4: DETAILED HOMEWORK REVIEW & GRADING -->
+    <div id="modal-review-hw" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-2xl bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <div>
+                    <span class="text-xs font-bold text-gray-500 uppercase">Перевірка домашньої роботи</span>
+                    <h3 class="text-xl font-bold brand-font" id="review-hw-student-name">Чаленко Данилко</h3>
+                </div>
+                <button onclick="closeModal('modal-review-hw')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
 
-      <div class="lesson-material-box">
-        <strong>Текстова відповідь учня:</strong>
-        <p id="chw-text-ans" style="margin-top: 5px; font-size: 0.9rem;"></p>
-      </div>
+            <div class="space-y-4">
+                <div class="p-3 bg-gray-50 rounded-xl border-2 border-gray-900">
+                    <span class="text-xs font-bold text-gray-500 block">Урок / Тема:</span>
+                    <h4 class="font-bold text-base text-gray-900" id="review-hw-title">Hobbies, Creativity & Entertainment</h4>
+                </div>
 
-      <div class="lesson-material-box">
-        <strong>Голосове завдання (Вокабуляр):</strong>
-        <div style="margin-top: 8px;" id="chw-audio-container">
-          <!-- Audio player injected here -->
+                <div class="p-4 bg-white rounded-xl border-2 border-gray-900">
+                    <h5 class="text-xs font-bold text-gray-700 uppercase mb-2">Текстове виконання:</h5>
+                    <p class="text-sm bg-gray-50 p-3 rounded-lg border border-gray-300" id="review-hw-text"></p>
+                </div>
+
+                <div class="p-4 bg-yellow-50 rounded-xl border-2 border-gray-900">
+                    <h5 class="text-xs font-bold text-gray-800 uppercase mb-2"><i class="fa-solid fa-microphone text-red-500 mr-1"></i> Голосовий вокабуляр:</h5>
+                    <div id="review-hw-audio-container" class="mt-2"></div>
+                </div>
+
+                <div class="p-3 bg-blue-50 rounded-xl border-2 border-gray-900 flex justify-between items-center">
+                    <span class="text-xs font-bold text-gray-700">Результат тесту по темі:</span>
+                    <span class="pill-sketch px-3 py-1 text-xs font-bold bg-white" id="review-hw-quiz-score">90% (9/10)</span>
+                </div>
+
+                <div class="pt-2 flex items-center space-x-3">
+                    <input type="number" id="input-grade-val" min="0" max="100" value="90" class="w-24 p-2 border-2 border-gray-900 rounded-xl text-center font-bold text-lg">
+                    <button onclick="saveHomeworkGrade()" class="flex-1 btn-sketch py-3 bg-green-300 hover:bg-green-400 font-bold">
+                        Зберегти та виставити оцінку <i class="fa-solid fa-check ml-1"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="lesson-material-box">
-        <strong>Прикріплені файли:</strong>
-        <div id="chw-files-container" style="margin-top: 5px; font-size: 0.9rem;"></div>
-      </div>
-
-      <div class="form-group" style="margin-top: 20px;">
-        <label>Виставити оцінку (1-100%):</label>
-        <input type="number" id="chw-grade-input" class="form-control" value="90" min="0" max="100">
-      </div>
-
-      <button class="btn btn-green" style="width: 100%; justify-content: center;" onclick="submitHomeworkGrade()"><i class="fa-solid fa-check"></i> Зберегти оцінку</button>
     </div>
-  </div>
 
-  <!-- 4. Submit Homework Modal (Student View) -->
-  <div class="modal-overlay" id="modal-submit-hw">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-submit-hw')">✕</button>
-      <h3><i class="fa-solid fa-paper-plane"></i> Здача домашнього завдання</h3>
-      
-      <div class="form-group" style="margin-top: 15px;">
-        <label>Текст відповіді / посилання на Google Doc:</label>
-        <textarea id="sub-hw-text" class="form-control" rows="3" placeholder="Введіть текст або посилання..."></textarea>
-      </div>
+    <!-- MODAL 5: SUBMIT HOMEWORK (Student) -->
+    <div id="modal-submit-hw" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-xl bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <h3 class="text-xl font-bold brand-font"><i class="fa-solid fa-upload mr-2"></i>Здача ДЗ</h3>
+                <button onclick="closeModal('modal-submit-hw')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
 
-      <!-- Audio Voice Recorder Widget -->
-      <div class="form-group">
-        <label>Запис голосового завдання (Вимова / Вокабуляр):</label>
-        <div class="audio-rec-box">
-          <button class="btn btn-yellow" id="rec-toggle-btn" onclick="toggleAudioRecording()"><i class="fa-solid fa-microphone"></i> Записати голос</button>
-          <div id="rec-status" style="margin-top: 8px; font-size: 0.8rem; font-weight: 700;"></div>
-          <audio id="audio-preview" controls style="display: none; margin: 10px auto 0 auto; width: 100%; max-width: 300px;"></audio>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Текст або посилання (Google Doc/Word):</label>
+                    <textarea id="sub-hw-text" rows="3" placeholder="Введіть ваш текст тут..." class="w-full p-3 border-2 border-gray-900 rounded-xl text-sm focus:outline-none"></textarea>
+                </div>
+
+                <div class="p-4 bg-yellow-50 rounded-xl border-2 border-gray-900">
+                    <label class="block text-xs font-bold text-gray-800 uppercase mb-2"><i class="fa-solid fa-microphone text-red-500 mr-1"></i> Запис голосу (Вокабуляр):</label>
+                    <div class="flex items-center space-x-3">
+                        <button id="rec-btn" onclick="toggleAudioRec()" class="btn-sketch px-4 py-2 text-xs bg-red-100 text-red-700 font-bold">
+                            <i class="fa-solid fa-circle mr-1"></i> Записати голос
+                        </button>
+                        <span id="rec-status" class="text-xs font-bold text-gray-600">Готово до запису</span>
+                    </div>
+                    <audio id="rec-preview" controls class="w-full mt-3 hidden h-8"></audio>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Файл (PDF, DOCX):</label>
+                    <input type="file" id="sub-hw-file" class="w-full p-2 border-2 border-gray-900 rounded-xl text-xs">
+                </div>
+
+                <button onclick="confirmSendHomework()" class="w-full btn-sketch py-3 bg-yellow-300 hover:bg-yellow-400 font-bold text-sm">
+                    Відправити вчителю <i class="fa-solid fa-paper-plane ml-1"></i>
+                </button>
+            </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label>Прикріпити файл (PDF, Word, картинка):</label>
-        <input type="file" id="sub-hw-file" class="form-control">
-      </div>
-
-      <button class="btn btn-green" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="saveStudentHomeworkSubmission()"><i class="fa-solid fa-cloud-arrow-up"></i> Відправити вчителю</button>
     </div>
-  </div>
 
-  <!-- 5. Calendar Modal -->
-  <div class="modal-overlay" id="modal-calendar">
-    <div class="modal-box" style="max-width: 800px;">
-      <button class="close-btn" onclick="closeModal('modal-calendar')">✕</button>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-        <h3><i class="fa-solid fa-calendar-days"></i> Календар занять (Натисніть день для створення уроку)</h3>
-      </div>
+    <!-- MODAL 6: ADD USEFUL LINK -->
+    <div id="modal-add-link" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-md bg-white p-6">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <h3 class="text-xl font-bold brand-font">Додати корисне посилання</h3>
+                <button onclick="closeModal('modal-add-link')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
 
-      <div class="calendar-grid">
-        <div class="cal-day-header">Пн</div><div class="cal-day-header">Вт</div><div class="cal-day-header">Ср</div>
-        <div class="cal-day-header">Чт</div><div class="cal-day-header">Пт</div><div class="cal-day-header">Сб</div><div class="cal-day-header">Нд</div>
-      </div>
-      <div class="calendar-grid" id="calendar-days-container">
-        <!-- Rendered Days -->
-      </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Назва:</label>
+                    <input type="text" id="nl-title" placeholder="наприклад: Zoom / PDF підручник" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">URL Посилання:</label>
+                    <input type="text" id="nl-url" placeholder="https://..." class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Тип іконки:</label>
+                    <select id="nl-icon" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm">
+                        <option value="fa-video text-blue-500">Zoom / Відео</option>
+                        <option value="fa-file-pdf text-red-500">PDF Документ</option>
+                        <option value="fa-book text-green-600">Книги / Підручник</option>
+                        <option value="fa-gamepad text-purple-600">Гра / Інтерактив</option>
+                    </select>
+                </div>
+                <button onclick="saveNewUsefulLink()" class="w-full btn-sketch py-3 bg-yellow-300 hover:bg-yellow-400 font-bold text-sm">
+                    Зберегти посилання
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- 6. Create Lesson / Homework Modal -->
-  <div class="modal-overlay" id="modal-create-lesson">
-    <div class="modal-box">
-      <button class="close-btn" onclick="closeModal('modal-create-lesson')">✕</button>
-      <h3><i class="fa-solid fa-plus"></i> Створити урок / ДЗ</h3>
-      
-      <div class="form-group" style="margin-top: 15px;">
-        <label>Назва уроку / Теми:</label>
-        <input type="text" id="cl-title" class="form-control" placeholder="наприклад: Hobbies & Entertainment">
-      </div>
+    <!-- MODAL 7: CALENDAR -->
+    <div id="modal-calendar" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-4xl bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-3">
+                <h3 class="text-xl font-bold brand-font"><i class="fa-regular fa-calendar-days text-yellow-500 mr-2"></i>Календар Занять</h3>
+                <button onclick="closeModal('modal-calendar')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-center font-bold text-xs mb-2">
+                <div class="py-1">Пн</div><div class="py-1">Вт</div><div class="py-1">Ср</div><div class="py-1">Чт</div><div class="py-1">Пт</div><div class="py-1 text-red-500">Сб</div><div class="py-1 text-red-500">Нд</div>
+            </div>
+            <div id="calendar-days-grid" class="grid grid-cols-7 gap-2 min-h-[300px]"></div>
+        </div>
+    </div>
 
-      <div class="form-group">
-        <label>Призначити для:</label>
-        <select id="cl-target" class="form-control">
-          <option value="Group 1.6">Група 1.6</option>
-          <option value="Group 1.5">Група 1.5</option>
-          <option value="Чаленко Філіція">Чаленко Філіція (Індивідуально)</option>
-          <option value="Чаленко Остап">Чаленко Остап (Індивідуально)</option>
-        </select>
-      </div>
+    <!-- MODAL 8: CREATE LESSON -->
+    <div id="modal-create-lesson" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-lg bg-white p-6 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <h3 class="text-xl font-bold brand-font">Створити Урок / ДЗ</h3>
+                <button onclick="closeModal('modal-create-lesson')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
 
-      <div class="form-group">
-        <label>Дата та термін (дедлайн):</label>
-        <input type="date" id="cl-date" class="form-control">
-      </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Тема уроку:</label>
+                    <input type="text" id="cl-title" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm" placeholder="наприклад: Travel & Exploring">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Призначити для:</label>
+                    <select id="cl-target" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm">
+                        <option value="Group 1.6">Група 1.6</option>
+                        <option value="Group 1.5">Група 1.5</option>
+                        <option value="Чаленко Філіція">Чаленко Філіція (Індивідуально)</option>
+                        <option value="Чаленко Остап">Чаленко Остап (Індивідуально)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Дата проведення / Дедлайн:</label>
+                    <input type="date" id="cl-date" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Конспект / Матеріал:</label>
+                    <textarea id="cl-summary" rows="3" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm" placeholder="Лекція..."></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Опис ДЗ:</label>
+                    <input type="text" id="cl-hw" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm" placeholder="Опис завдання...">
+                </div>
+                <button onclick="saveCreatedLesson()" class="w-full btn-sketch py-3 bg-green-300 hover:bg-green-400 font-bold text-sm">
+                    Опублікувати урок
+                </button>
+            </div>
+        </div>
+    </div>
 
-      <div class="form-group">
-        <label>Конспект / Опис матеріалу:</label>
-        <textarea id="cl-summary" class="form-control" rows="3" placeholder="Введіть конспект або слова..."></textarea>
-      </div>
+    <!-- MODAL 9: ADD TEACHER -->
+    <div id="modal-add-teacher" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4">
+        <div class="card-sketch w-full max-w-md bg-white p-6">
+            <div class="flex justify-between items-center mb-4 border-b-2 border-gray-900 pb-2">
+                <h3 class="text-xl font-bold brand-font">Реєстрація вчителя</h3>
+                <button onclick="closeModal('modal-add-teacher')" class="text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">ПІБ Вчителя:</label>
+                    <input type="text" placeholder="Олена Петрівна" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Групи доступу:</label>
+                    <input type="text" placeholder="Група 1.4, Група 1.5" class="w-full p-2.5 border-2 border-gray-900 rounded-xl text-sm">
+                </div>
+                <button onclick="alert('Вчителя додано!'); closeModal('modal-add-teacher');" class="w-full btn-sketch py-3 bg-purple-300 font-bold text-sm">
+                    Зареєструвати
+                </button>
+            </div>
+        </div>
+    </div>
 
-      <div class="form-group">
-        <label>Корисні посилання / Відео (URL):</label>
-        <input type="text" id="cl-links" class="form-control" placeholder="https://zoom.us/... або https://youtube.com/...">
-      </div>
+    <script>
+        let currentRole = 'teacher';
+        let activeSelectedStudentName = '';
+        let mediaRecorder = null;
+        let audioChunks = [];
 
-      <div class="form-group">
-        <label>Опис Домашнього Завдання:</label>
-        <input type="text" id="cl-hw" class="form-control" placeholder="наприклад: Записати вимову нових слів">
-      </div>
+        const defaultDatabase = {
+            lessons: [
+                { id: 1, title: 'Everyday Life & Routines', target: 'Group 1.6', date: '2026-11-01', summary: 'Презентація матеріалу Present Simple vs Continuous. Основна лексика щоденних справ.', hw: 'Описати свій типовий день (8-10 речень)', links: 'https://zoom.us/j/demo', status: 'completed', score: 90 },
+                { id: 2, title: 'Travel & Exploring', target: 'Group 1.6', date: '2026-11-04', summary: 'Обговорення аеропортів, готелів та діалогів при замовленні квитків.', hw: 'Записати 5 голосових фраз для аеропорту', links: 'https://pdf-document.com', status: 'completed', score: 85 },
+                { id: 3, title: 'Hobbies, Creativity & Entertainment', target: 'Group 1.6', date: '2026-11-08', summary: 'Обговорення фільмів, книг та образотворчого мистецтва.', hw: 'Написати короткий відгук про улюблений фільм', links: 'https://youtube.com', status: 'pending_review', score: null },
+                { id: 4, title: 'Society, Tech & Big Ideas', target: 'Group 1.6', date: '2026-11-12', summary: 'Майбутні технології та дискусія.', hw: 'Підготувати тези для дебатів', links: '', status: 'upcoming', score: null }
+            ],
+            students: [
+                { id: 1, name: 'Чаленко Данилко', group: 'Group 1.6', type: 'group', score: 87, avatar: 'ЧД' },
+                { id: 2, name: 'Чаленко Філіція', group: null, type: 'individual', score: 92, avatar: 'ЧФ' },
+                { id: 3, name: 'Чаленко Остап', group: null, type: 'individual', score: 79, avatar: 'ЧО' }
+            ],
+            links: [],
+            submissions: [
+                { id: 1, lessonId: 3, studentName: 'Чаленко Данилко', textAns: 'My favorite movie is Interstellar because of graphics and story.', audioUrl: null, fileName: 'homework_chalenko.pdf' }
+            ]
+        };
 
-      <button class="btn btn-green" style="width: 100%; justify-content: center; margin
+        function getDB() {
+            if(!localStorage.getItem('cat_teacher_db_v2')) {
+                localStorage.setItem('cat_teacher_db_v2', JSON.stringify(defaultDatabase));
+            }
+            return JSON.parse(localStorage.getItem('cat_teacher_db_v2'));
+        }
+
+        function saveDB(db) {
+            localStorage.setItem('cat_teacher_db_v2', JSON.stringify(db));
+            renderUI();
+        }
+
+        function hideSplash() {
+            document.getElementById('splash-screen').style.opacity = '0';
+            setTimeout(() => document.getElementById('splash-screen').style.display = 'none', 500);
+        }
+
+        function switchRoleToggle() {
+            currentRole = (currentRole === 'teacher') ? 'student' : 'teacher';
+            document.getElementById('user-name-text').innerText = currentRole === 'teacher' ? 'Марія Олександрівна' : 'Чаленко Данилко';
+            document.getElementById('user-role-text').innerText = currentRole === 'teacher' ? 'Вчитель' : 'Учень (Група 1.6)';
+            document.getElementById('user-avatar-text').innerText = currentRole === 'teacher' ? 'МО' : 'ЧД';
+            
+            if(currentRole === 'teacher') {
+                document.getElementById('view-teacher-dashboard').classList.remove('hidden');
+                document.getElementById('view-student-dashboard').classList.add('hidden');
+            } else {
+                document.getElementById('view-teacher-dashboard').classList.add('hidden');
+                document.getElementById('view-student-dashboard').classList.remove('hidden');
+            }
+            renderUI();
+        }
+
+        function renderUI() {
+            const db = getDB();
+
+            if(currentRole === 'teacher') {
+                // Render Groups
+                document.getElementById('teacher-groups-list').innerHTML = `
+                    <div class="card-sketch p-3 flex justify-between items-center cursor-pointer hover:bg-yellow-50" onclick="openGroupModal('Group 1.6')">
+                        <span class="font-bold">Група 1.6</span> <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+                    <div class="card-sketch p-3 flex justify-between items-center cursor-pointer hover:bg-yellow-50" onclick="openGroupModal('Group 1.5')">
+                        <span class="font-bold">Група 1.5</span> <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+                `;
+
+                // Render Individuals
+                document.getElementById('teacher-indiv-list').innerHTML = db.students.filter(s => s.type === 'individual').map(s => `
+                    <div class="card-sketch p-3 flex justify-between items-center cursor-pointer hover:bg-blue-50" onclick="openStudentModal('${s.name}')">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-6 h-6 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold text-[10px]">${s.avatar}</div>
+                            <span class="font-bold text-sm">${s.name}</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </div>
+                `).join('');
+
+                // Render Useful Links Grid
+                const linksContainer = document.getElementById('useful-links-grid');
+                linksContainer.innerHTML = `
+                    <div onclick="openAddLinkModal()" class="card-sketch p-4 flex flex-col items-center justify-center cursor-pointer hover:bg-yellow-50 text-center min-h-[100px] border-dashed border-2">
+                        <i class="fa-solid fa-plus text-3xl text-gray-800"></i>
+                        <span class="text-xs font-bold mt-2">Додати</span>
+                    </div>
+                ` + db.links.map(l => `
+                    <a href="${l.url}" target="_blank" class="card-sketch p-4 flex flex-col items-center justify-center text-center min-h-[100px] hover:bg-gray-50">
+                        <i class="fa-solid ${l.icon} text-3xl mb-1"></i>
+                        <span class="text-xs font-bold truncate w-full">${l.title}</span>
+                    </a>
+                `).join('');
+
+                // Render Pending Submissions
+                document.getElementById('teacher-submissions-list').innerHTML = db.submissions.map(sub => `
+                    <div class="card-sketch p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <div>
+                            <div class="font-bold text-base">${sub.studentName} <span class="text-xs bg-yellow-200 px-2 py-0.5 rounded border border-gray-900">Група 1.6</span></div>
+                            <div class="text-xs text-gray-600">Додано виконане ДЗ</div>
+                        </div>
+                        <button onclick="openReviewHWModal(${sub.id})" class="btn-sketch px-4 py-2 text-xs bg-blue-300 hover:bg-blue-400 font-bold">
+                            <i class="fa-solid fa-magnifying-glass mr-1"></i> Перевірити
+                        </button>
+                    </div>
+                `).join('');
+
+            } else {
+                // Render Student Past Lessons
+                document.getElementById('student-past-lessons').innerHTML = db.lessons.filter(l => l.status === 'completed').map(l => `
+                    <div class="card-sketch p-3 flex justify-between items-center cursor-pointer hover:bg-gray-50" onclick="openLessonModal(${l.id})">
+                        <span class="font-bold text-sm">${l.title}</span>
+                        <i class="fa-solid fa-check text-green-600"></i>
+                    </div>
+                `).join('');
+
+                // Render Student Homework
+                document.getElementById('student-current-hw').innerHTML = db.lessons.filter(l => l.status === 'pending_review' || l.status === 'upcoming').map(l => `
+                    <div class="card-sketch p-3 flex justify-between items-center cursor-pointer hover:bg-yellow-50" onclick="openLessonModal(${l.id})">
+                        <span class="font-bold text-sm">${l.title}</span>
+                        <span class="text-[10px] bg-yellow-200 px-2 py-0.5 rounded border border-gray-900 font-bold">ДЗ</span>
+                    </div>
+                `).join('');
+
+                // Render Upcoming
+                document.getElementById('student-upcoming-lessons').innerHTML = db.lessons.filter(l => l.status === 'upcoming').map(l => `
+                    <div class="card-sketch p-3 flex justify-between items-center cursor-pointer hover:bg-blue-50" onclick="openLessonModal(${l.id})">
+                        <span class="font-bold text-sm">${l.title}</span>
+                        <i class="fa-regular fa-clock text-blue-500"></i>
+                    </div>
+                `).join('');
+            }
+        }
+
+        /* Open Lesson Details */
+        function openLessonModal(id) {
+            const db = getDB();
+            const lesson = db.lessons.find(l => l.id === id);
+            if(!lesson) return;
+
+            document.getElementById('lv-title').innerText = lesson.title;
+            document.getElementById('lv-date').innerText = `Дата: ${lesson.date}`;
+            document.getElementById('lv-summary').innerText = lesson.summary || 'Конспект відсутній.';
+            document.getElementById('lv-links').innerHTML = lesson.links ? `<a href="${lesson.links}" target="_blank" class="underline text-blue-600 font-bold">${lesson.links}</a>` : 'Немає посилань';
+            document.getElementById('lv-hw-desc').innerText = lesson.hw || 'Завдання відсутнє';
+
+            const actionBtn = document.getElementById('lv-student-action');
+            if(currentRole === 'student') actionBtn.classList.remove('hidden');
+            else actionBtn.classList.add('hidden');
+
+            openModal('modal-lesson-view');
+        }
+
+        /* Open Group Details */
+        function openGroupModal(groupName) {
+            const db = getDB();
+            document.getElementById('group-modal-title').innerText = groupName;
+            const students = db.students.filter(s => s.group === groupName || groupName === 'Group 1.6');
+            
+            document.getElementById('group-students-list').innerHTML = students.map(s => `
+                <div class="card-sketch p-3 flex justify-between items-center bg-gray-50">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center font-bold text-xs">${s.avatar}</div>
+                        <span class="font-bold text-sm">${s.name}</span>
+                    </div>
+                    <button onclick="closeModal('modal-group-detail'); openStudentModal('${s.name}');" class="btn-sketch px-3 py-1 text-xs bg-white">
+                        Картка учня
+                    </button>
+                </div>
+            `).join('');
+
+            openModal('modal-group-detail');
+        }
+
+        /* Open Student Details */
+        function openStudentModal(name) {
+            const db = getDB();
+            activeSelectedStudentName = name;
+            const student = db.students.find(s => s.name === name) || { name: name, score: 87, avatar: 'УЧ' };
+
+            document.getElementById('modal-student-name').innerText = student.name;
+            document.getElementById('modal-student-avatar').innerText = student.avatar;
+            document.getElementById('modal-student-avg').innerText = student.score + '%';
+
+            document.getElementById('modal-student-lessons-list').innerHTML = db.lessons.map(l => `
+                <div class="card-sketch p-3 flex justify-between items-center cursor-pointer hover:bg-gray-50" onclick="openLessonModal(${l.id})">
+                    <div>
+                        <div class="font-bold text-sm">${l.title}</div>
+                        <div class="text-[10px] text-gray-500">Дата: ${l.date}</div>
+                    </div>
+                    <span class="text-xs px-2 py-0.5 rounded border border-gray-900 ${l.status === 'completed' ? 'bg-green-200' : 'bg-yellow-200'} font-bold">
+                        ${l.status === 'completed' ? 'Завершено' : 'Активне ДЗ'}
+                    </span>
+                </div>
+            `).join('');
+
+            openModal('modal-student-detail');
+        }
+
+        /* Open Homework Review Modal for Teacher */
+        function openReviewHWModal(subId) {
+            const db = getDB();
+            const sub = db.submissions.find(s => s.id === subId);
+            if(!sub) return;
+
+            document.getElementById('review-hw-student-name').innerText = sub.studentName;
+            document.getElementById('review-hw-text').innerText = sub.textAns || 'Немає текстової відповіді';
+
+            const audioBox = document.getElementById('review-hw-audio-container');
+            if(sub.audioUrl) {
+                audioBox.innerHTML = `<audio controls src="${sub.audioUrl}" class="w-full h-8"></audio>`;
+            } else {
+                audioBox.innerHTML = `<span class="text-xs text-gray-500">Голосове завдання відсутнє</span>`;
+            }
+
+            openModal('modal-review-hw');
+        }
+
+        function saveHomeworkGrade() {
+            alert('Оцінку успішно збережено!');
+            closeModal('modal-review-hw');
+        }
+
+        function saveNewUsefulLink() {
+            const db = getDB();
+            const title = document.getElementById('nl-title').value;
+            const url = document.getElementById('nl-url').value;
+            const icon = document.getElementById('nl-icon').value;
+
+            if(!title) return;
+            db.links.push({ title, url: url || '#', icon });
+            saveDB(db);
+            closeModal('modal-add-link');
+        }
+
+        function saveCreatedLesson() {
+            const db = getDB();
+            const title = document.getElementById('cl-title').value;
+            const target = document.getElementById('cl-target').value;
+            const date = document.getElementById('cl-date').value;
+            const summary = document.getElementById('cl-summary').value;
+            const hw = document.getElementById('cl-hw').value;
+
+            if(!title) return;
+            db.lessons.push({
+                id: Date.now(),
+                title, target, date: date || '2026-11-15',
+                summary, hw, links: '', status: 'upcoming', score: null
+            });
+            saveDB(db);
+            closeModal('modal-create-lesson');
+        }
+
+        function openCreateLessonForTarget(targetName) {
+            closeModal('modal-group-detail');
+            closeModal('modal-student-detail');
+            openModal('modal-create-lesson');
+        }
+
+        function openAddLinkModal() { openModal('modal-add-link'); }
+        function openAddTeacherModal() { openModal('modal-add-teacher'); }
+        function openSubmitHWModal() { openModal('modal-submit-hw'); }
+        function openCalendarModal() { openModal('modal-calendar'); }
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        window.onload = function() {
+            renderUI();
+        };
+    </script>
+</body>
+</html>
